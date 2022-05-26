@@ -1,0 +1,9 @@
+.bigcard-container {   
+    height: 100px;
+}
+
+.bigcard-container-div > img {
+    width: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
