@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './button';
 
@@ -84,6 +84,13 @@ const StyleLabel = styled.label`
 
 
 function SectionChat (){
+    const [nome, setNome ] = useState("")
+    const [mensagem, setMensagem] = useState("")
+
+    function handleClick(){
+        return <p>{mensagem}</p>
+    }
+
     return(
         <StyleSection>
             <StyleTitle>Protótipo do WhatsLab</StyleTitle> 
@@ -91,9 +98,9 @@ function SectionChat (){
                 <StyleLabel>Nome</StyleLabel>
                 <StyleInputNome type='text' />
                 <StyleLabel>Mensagem</StyleLabel>   
-                <StyleInputMensagem type='text'/>
+                <StyleInputMensagem onChange={event => setMensagem(event.target.value)} type='text'/>
                    
-                  <Button/> 
+                  <Button onClink={()=> handleClick()}/> 
             </StyleDiv>
             
                     
