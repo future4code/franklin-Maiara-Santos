@@ -52,6 +52,7 @@ function Post(props){
   const [curtido, setCurtido] = useState(false)
   const [comentando, setComentando] = useState(false)
   const [numeroComentarios, setNumeroComentarios] = useState(0)
+  const [inputValue, setInputValue] = useState('')
 
     const onClickCurtida = () => {
     setCurtido(!numeroCurtidas)
@@ -64,17 +65,21 @@ function Post(props){
       setnumeroCurtidas (0)
     }
   }
+
+  const enviarInputValue = (event) => {
+    setInputValue(event.target.value);
+  }
   
   const onClickComentario = () => {
     setComentando(!comentando) 
     if(comentando) {
-      componenteComentario = <SecaoComentario aoEnviar={aoEnviarComentario}/>
+      componenteComentario = <SecaoComentario aoEnviar={aoEnviarComentario} value={inputValue} onChangeComentario={enviarInputValue}/>
     }
     console.log(comentando)
   }
   
   const aoEnviarComentario = () => {
-    setComentando(false)
+    setComentando(!comentando)
     setNumeroComentarios(numeroComentarios + 1)
   }
   
