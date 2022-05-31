@@ -55,7 +55,7 @@ function Post(props){
   const [inputValue, setInputValue] = useState('')
 
     const onClickCurtida = () => {
-    setCurtido(!numeroCurtidas)
+    setCurtido(!curtido)
     if(!numeroCurtidas) {
       setCurtido(true)
       setnumeroCurtidas (numeroCurtidas + 1)
