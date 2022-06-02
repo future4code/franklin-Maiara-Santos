@@ -35,7 +35,7 @@ function App() {
       {
         nomeUsuario: 'laurinha',
         fotoUsuario: 'https://picsum.photos/50/50',
-        feedUsuario: 'https://picsum.photos/200/150'
+        feedUsuario: "https://picsum.photos/200/150"
       },
       {
         nomeUsuario: 'rafinha',
@@ -56,6 +56,11 @@ function App() {
       fotoUsuario: valorInputFoto,      
       feedUsuario: valorInputFeed
     }
+
+    console.log (valorInputNome);
+    console.log (valorInputFoto);
+    console.log (valorInputFeed);
+    console.log (novaListadePost)
 
     const novaListaPost = [...estadoPost,novoPostParaAdicionar];
     setEstadoPost(novaListaPost);
@@ -81,8 +86,9 @@ function App() {
       return (
                  
           <Post
-            nomeUsuario={post.nomeUsuario}
-            fotoUsuario={post.fotoUsuario}
+            key={post.nomeUsuario} 
+            nomeUsuario={post.nomeUsuario}           
+            fotoUsuario={post.fotoUsuario}            
             feedUsuario={post.feedUsuario}
             />
      )

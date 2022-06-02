@@ -105,7 +105,7 @@ function Post(props){
         <p>{props.nomeUsuario}</p>
       </PostHeader>
 
-      <PostPhoto src={props.fotoPost} alt={'Imagem do post'}/>
+      <PostPhoto src={props.feedUsuario} alt={'Imagem do post'}/>
 
       <PostFooter>
         <IconeComContador
