@@ -2,26 +2,74 @@ import HomePlaylist from './HomePlaylist'
 import React , {useState} from 'react'
 import styled from 'styled-components'
 import axios from "axios"
-
-
-// import swal from "sweetalert";
-
+import Header from './Header'
 
 const StyleContainerCardPlaylist = styled.div // Estilo do card
 `     
     width: 22%;
-    height: 350px;
+    height: 390px;
     align-items: center;
     background-color: #dcdcdc;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 12px;     
+    justify-content: space-evenly;
+    gap: 10px;     
     border-radius: 6px;
     margin: auto;
-    margin-top: 15%;       
+    margin-top: 13%;           
 
 `
+
+const StyleSubtitle = styled.h2`
+  font-family: sans-serif;
+  color: #000;
+  background-color: #dcdcdc;
+  margin-top: 50px;
+  font-size: 28px;
+ 
+
+`
+
+const StyleInput = styled.input`
+  background-color: #fff;
+  height: 40px;
+  width: 250px;
+  display: flex;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  color: #45525b;
+  font-weight: 500;
+`
+
+const StyleButton1 = styled.button`
+  background-color: #45525b;
+  color: #fff;
+  width: 120px;
+  height: 38px;
+  font-family: sans-serif;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  margin-bottom: 60px;
+  font-size: 14px;
+
+`
+const StyleButton2 = styled.button`
+  background-color: #fe7e01;
+  color: #fff;
+  width: 120px;
+  height: 38px;
+  font-family: sans-serif;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  font-size: 14px;
+`
+
 
 function CardCreateNewPlaylist () {
 
@@ -45,9 +93,9 @@ const AddPlaylist = () => {
     nome: InputNewPlaylist,
         };
     
-  const response = axios.post(linkDaApi,body,header)
+  axios.post(linkDaApi,body,header)
 
-  .then((response) => {
+  .then((sucess) => {
     setNewPlaylist(InputNewPlaylist);
     alert('Playlist criada com sucesso!')
 })
@@ -61,17 +109,21 @@ setNewPlaylist(InputNewPlaylist)
 }
 
     return (
+        <div>
+        <Header></Header>
         <StyleContainerCardPlaylist>
-            <p>Criar uma nova Playlist</p>
-            <input
+            <StyleSubtitle>Criar uma nova Playlist</StyleSubtitle>
+            <StyleInput
             value={InputNewPlaylist}
             placeholder='Nome da nova Playlist'
             onChange={handleInputNewPlaylist}
             type="text"
             />
-            <button onClick={AddPlaylist}>Criar Playlist</button>
-            <button onClick={''}>Ver Playlists</button>               
+            <StyleButton1 onClick={AddPlaylist}>Criar Playlist</StyleButton1>
+            <StyleButton2 onClick={''}>Ver Playlists</StyleButton2>               
         </StyleContainerCardPlaylist>
+        </div>
+    
     )
 }
 

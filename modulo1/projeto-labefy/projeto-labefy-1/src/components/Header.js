@@ -3,21 +3,38 @@ import styled from 'styled-components'
 
 const StyleMenu = styled.div`
   width: 100%
-  height: 300px;
-  background-color: #dcdcdc;
+  height: 350px;
+  background-color: #fff;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;    
   display: flex;
+
+`
+const StyleLinks = styled.a`
+  color: #45525B;
+  background-color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+
+`
+
+const StyleTitle = styled.h2`
+color: #FE7E01;
+background-color: #fff;
+text-decoration: none;
+font-size: 40px;
+
 `
 
 function Header () {
   return (
     <StyleMenu>       
-       <h1>Labefy</h1>  
-        <a href='#'>QUEM SOMOS</a>
-        <a href='#'>O PROJETO</a>
-        <a href='#'>COMECE AQUI</a>               
+        <StyleTitle>Labefy</StyleTitle>  
+        <StyleLinks href='#'> QUEM SOMOS </StyleLinks>
+        <StyleLinks href='#'> O PROJETO </StyleLinks>
+        <StyleLinks href='#'> COMECE AQUI </StyleLinks>               
     </StyleMenu>
     )
 }
