@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+ import React from 'react';
  import styled from 'styled-components';
  import Header from './Header';
- import { linkDaApi , header } from "./CardCreateNewPlaylist"
+//  import { linkDaApi , header } from "./CardCreateNewPlaylist"
+ import { Link } from 'react-router-dom';
 
  const StyleContainerCard = styled.div // Estilo do card
 `     
@@ -38,6 +39,7 @@ import React, { useState } from 'react';
   font-weight: 700;
   margin-bottom: 30px;
   font-size: 14px;
+  cursor: pointer;
 `
 
 
@@ -52,18 +54,18 @@ const StyleButtonMini = styled.button`
   font-weight: 700;
   margin-bottom: 30px;
   font-size: 14px;
+  cursor: pointer;
+`
+
+const StyleSection = styled.section`
+  background-color: #1A2B56;
+  height: 935px;
 `
 
  function HomePlaylist () {
 
- const [statePlaylist, setStatePlayslist] = useState ([]);
-
- const addTrackToPlayList = async (playlistId) => {
-  
- }
-
    return(
-    <div>
+    <StyleSection>
        <Header></Header>
        <StyleContainerCard>              
         <StyleSubtitle>Playlists Criadas</StyleSubtitle>
@@ -72,9 +74,9 @@ const StyleButtonMini = styled.button`
           {''}
           <StyleButtonMini></StyleButtonMini>
         </div>
-        <StyleButton>Criar nova Playlist</StyleButton>
+        <Link to="/"> <StyleButton>Criar nova Playlist</StyleButton></Link>       
      </StyleContainerCard>
-    </div>     
+    </StyleSection>     
    )
  }
 

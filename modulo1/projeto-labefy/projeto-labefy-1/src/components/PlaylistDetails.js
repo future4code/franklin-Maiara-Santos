@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 const StyleContainerCard = styled.div // Estilo do card
 `     
@@ -72,6 +73,7 @@ const StyleButton1 = styled.button`
   font-weight: 700;
   margin-bottom: 40px;
   font-size: 14px;
+  cursor: pointer;
 
 `
 const StyleButton2 = styled.button`
@@ -85,12 +87,17 @@ const StyleButton2 = styled.button`
   font-weight: 700;
   margin-bottom: 30px;
   font-size: 14px;
+  cursor: pointer;
 `
 
+const StyleSection = styled.section`
+  background-color: #1A2B56;
+  height: 935px;
+`
 
 function PlaylistDetails () {
     return (
-        <div>
+        <StyleSection>
             <Header></Header>
             <StyleContainerCard>            
             <StyleSubtitle>Músicas desta Playlist</StyleSubtitle>
@@ -112,10 +119,10 @@ function PlaylistDetails () {
                 onChange={''}
                 />
                 <StyleButton1>Adicionar a Playlist</StyleButton1>
-                <StyleButton2>Criar uma Playlist</StyleButton2>
+                <Link to="/"><StyleButton2>Criar uma Playlist</StyleButton2></Link>                
             </StyleContainerCardMusic>
-        </StyleContainerCard>
-        </div>
+            </StyleContainerCard>
+        </StyleSection>
         
     )
 }
