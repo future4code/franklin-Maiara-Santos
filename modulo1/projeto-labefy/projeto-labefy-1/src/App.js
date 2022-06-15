@@ -85,35 +85,27 @@ function App() {
 const handleInputNewPlaylist = (event) => {
     setNewPlaylist (event.target.value)
     
-}
+};
 
-const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'
+const AddPlaylist = () =>{
+  const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'
 
-const header = {
-  headers: {
-    Authorization: "maiara-santos-franklin"
-  }
-}
-
-const AddPlaylist = () => {
-  const body = {
-    nome: InputNewPlaylist,
-        };
-    
-  axios.post(linkDaApi,body,header)
+  axios.get(linkDaApi, {
+    headers: {
+      Authorization: "maiara-santos-franklin"
+    }
+})
 
   .then((response) => {
     setNewPlaylist(InputNewPlaylist);
     alert('Playlist criada com sucesso!')
 })
-.catch((erro) => {
-    console.log(erro.message)
-    alert('Não foi possível criar a playlist')
+.catch((erro) => {    
+    alert('Não foi possível criar a playlist. Tente outro nome')
 })
 
-setNewPlaylist(InputNewPlaylist)
+} 
 
-}
 
     return (
         <StyleSection>
