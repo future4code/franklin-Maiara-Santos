@@ -89,8 +89,11 @@ const handleInputNewPlaylist = (event) => {
 
 const AddPlaylist = () =>{
   const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'
+  const body = {
+    name: InputNewPlaylist
+  }
 
-  axios.get(linkDaApi, {
+  axios.post(linkDaApi, body, {
     headers: {
       Authorization: "maiara-santos-franklin"
     }
