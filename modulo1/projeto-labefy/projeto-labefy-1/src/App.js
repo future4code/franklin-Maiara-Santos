@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
+// import {useEffect} from 'react';
 import './App.css';
 // import Routes from "./routes/routes.js";
 import styled from 'styled-components'
 import axios from "axios"
 import Header from './components/Header'
 import { Link } from 'react-router-dom';
+import swal from "sweetalert";
 
 const StyleContainerCardPlaylist = styled.div // Estilo do card
 `     
@@ -84,10 +86,11 @@ function App() {
 
 const handleInputNewPlaylist = (event) => {
     setNewPlaylist (event.target.value)
-    
+   
 };
 
-const AddPlaylist = () =>{
+const AddPlaylist = (event) =>{
+  event.preventDefault()
   const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'
   const body = {
     name: InputNewPlaylist
@@ -100,15 +103,17 @@ const AddPlaylist = () =>{
 })
 
   .then((response) => {
-    setNewPlaylist(InputNewPlaylist);
-    alert('Playlist criada com sucesso!')
+    setNewPlaylist (InputNewPlaylist) 
+    swal('Playlist criada com sucesso!')         
+    setNewPlaylist ('')
 })
+
 .catch((erro) => {    
-    alert('Não foi possível criar a playlist. Tente outro nome')
+    swal('Não foi possível criar a playlist. Tente outro nome')
+    setNewPlaylist ('')
 })
 
 } 
-
 
     return (
         <StyleSection>
