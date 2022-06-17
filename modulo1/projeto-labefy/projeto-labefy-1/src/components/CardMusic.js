@@ -14,10 +14,10 @@ function CardMusic (props) {
                 <div>
                     <p><strong>Título: </strong>{props.name}</p>
                     <p><strong>Artista: </strong>{props.artist}</p>
-                    <button onClick={() => {""}}><StyleImage src={Lixeira} alt="Excluir" title='Excluir Playlist'/></button>
+                    <button onClick={props.deletar}><StyleImage src={Lixeira} alt="Excluir" title='Excluir Playlist'/></button>
                 </div>
                 <div>
-                    <iframe src={props.url}/>
+                <audio src={props.url} controls />
                 </div>
             </div>
 

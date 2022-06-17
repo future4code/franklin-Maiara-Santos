@@ -1,18 +1,32 @@
 import React, {useEffect, useState} from 'react';
 import Header from './Header';
 import styled from 'styled-components'
-import { Link } from 'react-router-dom';
-// import Lixeira from "../imagens/cesto-de-lixo.png"
-// import {useEffect} from 'react'
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import swal from 'sweetalert';
 import CardMusic from './CardMusic';
 
+
+const StyleContainerMusicDetails = styled.div // Estilo do card
+`     
+    width: 40%;
+    height: auto;
+    align-items: center;
+    background-color: #dcdcdc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;     
+    border-radius: 6px;
+    margin: auto;
+    margin-top: 2%;
+    padding-bottom: 2%;           
+
+`
 
 const StyleContainerCard = styled.div // Estilo do card
 `     
     width: 40%;
-    height: 760px;
+    height: 700px;
     align-items: center;
     background-color: #dcdcdc;
     display: flex;
@@ -30,7 +44,7 @@ const StyleSubtitle = styled.h2`
   color: #000;
   background-color: #dcdcdc;   
   font-size: 28px;
-  margin-bottom: -20px;
+  margin-bottom: -15px;
   
 `
 
@@ -45,15 +59,15 @@ const StyleContainerCardMusic = styled.div // Estilo do card
     justify-content: space-around;      
     border-radius: 6px;
     margin: auto;
-    margin-top: 7%;           
+    margin-top: 15%;           
 
 `
 const StyleSubtitleMusic = styled.h2`
   font-family: sans-serif;
   color: #000;
   background-color: #fff;   
-  font-size: 22px;
-  margin-bottom: -20px;
+  font-size: 28px;
+  margin-bottom: 20px;
   
 `
 const StyleInput = styled.input`
@@ -77,7 +91,7 @@ const StyleButton1 = styled.button`
   border: none;
   border-radius: 15px;
   font-weight: 700;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
   font-size: 14px;
   cursor: pointer;
 
@@ -91,22 +105,22 @@ const StyleButton2 = styled.button`
   border: none;
   border-radius: 15px;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-size: 14px;
   cursor: pointer;
 `
 
 const StyleSection = styled.section`
   background-color: #1A2B56;
-  height: 935px;
+  height: auto;
 `
 
-const StyleContainerButton = styled.button`
+const StyleContainerList = styled.button`
  display: flex;
- flex-direction: row;
+ flex-direction: column;
  width: 350px;
- height: 100px;
- border: none;
+ height: auto;
+ border: 1px solid #000;
  text-align: center;
  justify-content: space-between;
  gap: 5px;
@@ -120,12 +134,13 @@ const StyleContainerButton = styled.button`
 
 function PlaylistDetails () { 
       
+const {playlistId} = useParams()
 
 const [inputMusic, setInputMusic] = useState ('')
 const [inputArtist, setInputArtist] = useState ('')
 const [inputLinkMusic, setInputLinkMusic] = useState ('')
 const [musica, setMusicas] = useState ([])
-const [playlists, setPlaylists] = useState ([])
+
 
  const handleInputMusic = (event) => {
    setInputMusic(event.target.value)
@@ -140,31 +155,10 @@ const [playlists, setPlaylists] = useState ([])
   
 }
 
-const pegarPlaylist = () => {
-  const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'    
-  axios.get(linkDaApi, {
-    headers: {
-      Authorization: "maiara-santos-franklin"
-    }
-})
-
-  .then((response) => {   
-    setPlaylists(response.data.result.list) 
-    
-})
-.catch((erro) => {    
-  swal('Tente Novamente')
-})
-
-  }
-
-  useEffect (pegarPlaylist, [])
-
-
 
 const pegaMusica = () => {
   const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'  
-  axios.get(`${linkDaApi}/${setPlaylists.id}/tracks`, {
+  axios.get(`${linkDaApi}/${playlistId}/tracks`, {
     headers: {
       Authorization: "maiara-santos-franklin"
     }
@@ -191,6 +185,7 @@ const ListOfMusic = musica.map((musica) => {
       artist={musica.artist}
       url={musica.url}
       musicId={musica.id}
+      deletar={''}
       />
   )
 });
@@ -198,11 +193,11 @@ const ListOfMusic = musica.map((musica) => {
     return (
         <StyleSection>
             <Header></Header>
-            <StyleContainerCard>            
+            <StyleContainerMusicDetails>            
             <StyleSubtitle>Músicas desta Playlist</StyleSubtitle>
-              <StyleContainerButton> 
-                {ListOfMusic}             
-              </StyleContainerButton>          
+              <StyleContainerList>{ListOfMusic}</StyleContainerList>
+            </StyleContainerMusicDetails>
+            <StyleContainerCard>           
             <StyleContainerCardMusic>
                 <StyleSubtitleMusic>Adicionar Música</StyleSubtitleMusic>
                 <StyleInput
@@ -221,6 +216,7 @@ const ListOfMusic = musica.map((musica) => {
                 onChange={handleInputLinkMusic}
                 />
                 <StyleButton1>Adicionar a Playlist</StyleButton1>
+                <Link to="/playlists"><StyleButton2>Voltar para Playlists</StyleButton2></Link>
                 <Link to="/"><StyleButton2>Criar uma Playlist</StyleButton2></Link>                
             </StyleContainerCardMusic>
             </StyleContainerCard>
