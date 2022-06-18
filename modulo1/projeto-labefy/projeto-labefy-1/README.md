@@ -28,15 +28,15 @@ O projeto Labefy foi desenvolvido por mim durante o curso FullStack na escola La
 
 O projeto inclui todas as features solicitadas, como:
 
-:eight_spoked_asterisk: Criar playlists e impedir criar playlists com nomes iguais
-:eight_spoked_asterisk: Visualizar todas as playlists em uma lista e deletar 
-:eight_spoked_asterisk: Adicionar e deletar músicas
+- :eight_spoked_asterisk: Criar playlists e impedir criar playlists com nomes iguais
+- :eight_spoked_asterisk: Visualizar todas as playlists em uma lista e deletar 
+- :eight_spoked_asterisk: Adicionar e deletar músicas
 
 ## Como rodar o projeto?
 
 Para rodar o projeto, é necessário seguir os seguintes passos:
 
-:one: Digitar npm install na pasta do projeto via terminal
-:two: Digitar npm start para abrir a aplicação (Você verá rodando na porta 3000 - http://localhost:3000/)
+- :one: Digitar npm install na pasta do projeto via terminal
+- :two: Digitar npm start para abrir a aplicação (Você verá rodando na porta 3000 - http://localhost:3000/)
 
 
