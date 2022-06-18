@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# :star: Projeto Labefy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Seu novo gerenciador de músicas e playlists
 
-## Available Scripts
+## Deploy
 
-In the project directory, you can run:
+Veja a aplicação aqui: labefy-project-finish-2022.surge.sh
 
-### `npm start`
+## Saiba tudo sobre o Labefy
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+O Labefy é um gerenciador de músicas e playlists. Inspirado em uma versão simplificada do Spotify, com o Labefy é possível criar e excluir playlists, adicionar músicas as suas playlists favoritas e excluir aquelas que já não curte mais. Venha para o mundo Labefy <3
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Papo técnico: O que vou aprender com esse projeto?
 
-### `npm test`
+O projeto Labefy foi desenvolvido por mim durante o curso FullStack na escola Labenu. O objetivo da atividade era criar uma interface do zero para a aplicação e integrar com a API Labefy.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## O que foi usado no projeto?
 
-### `npm run build`
+### Neste projeto foram usadas as seguintes tecnologias:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React (Componentes, estados, UseEffect, props e muito mais) :white_check_mark:
+- Styled Components :white_check_mark:
+- React Router Dom :white_check_mark:
+- Axios :white_check_mark:
+- Biblioteca swal :white_check_mark:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Quais features o projeto atende?
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+O projeto inclui todas as features solicitadas, como:
 
-### `npm run eject`
+:eight_spoked_asterisk: Criar playlists e impedir criar playlists com nomes iguais
+:eight_spoked_asterisk: Visualizar todas as playlists em uma lista e deletar 
+:eight_spoked_asterisk: Adicionar e deletar músicas
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Como rodar o projeto?
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Para rodar o projeto, é necessário seguir os seguintes passos:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+:one: Digitar npm install na pasta do projeto via terminal
+:two: Digitar npm start para abrir a aplicação (Você verá rodando na porta 3000 - http://localhost:3000/)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

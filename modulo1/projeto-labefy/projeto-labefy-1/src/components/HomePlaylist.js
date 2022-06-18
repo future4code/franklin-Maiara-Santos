@@ -130,8 +130,6 @@ const pegarPlaylist = () => {
   
     }  
    
-    useEffect (deletaPlaylist, []);
-
   
    return(
     <StyleSection>

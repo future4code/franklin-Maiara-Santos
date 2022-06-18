@@ -19,6 +19,7 @@ root.render(
       <Route element = { <App/> } exact path="/" />
       <Route element = { <HomePlaylist/> }  path="playlists" />
       <Route element = { <PlaylistDetails/> }  path="/playlists/:playlistId" />
+      
     </Routes>
   </BrowserRouter>
   </React.StrictMode>

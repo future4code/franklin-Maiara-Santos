@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import CardMusic from './CardMusic';
+import swal from 'sweetalert';
 
 
 const StyleContainerMusicDetails = styled.div // Estilo do card
@@ -134,8 +135,8 @@ const StyleContainerList = styled.button`
 
 function PlaylistDetails () { 
       
-const {playlistId} = useParams()
-
+  const {playlistId} = useParams()
+ 
 const [inputMusic, setInputMusic] = useState ('')
 const [inputArtist, setInputArtist] = useState ('')
 const [inputLinkMusic, setInputLinkMusic] = useState ('')
@@ -165,17 +166,64 @@ const pegaMusica = () => {
 })
 
   .then((response) => {   
-    // pegarPlaylist()
+    
     setMusicas (response.data.result.tracks) 
     
 })
-  .catch((erro) => {    
- /* swal('Tente de Novo')*/ /*BUG*/ 
-  
-})
+
 }
 
-useEffect (pegaMusica, [])
+pegaMusica()
+
+const adicionaMusica = () =>{
+
+  const body = {
+    name: inputMusic,
+    artist: inputArtist,
+    url: inputLinkMusic
+}
+ 
+  const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'  
+  axios.post(`${linkDaApi}/${playlistId}/tracks`,body, {
+    headers: {
+      Authorization: "maiara-santos-franklin"
+    }
+})
+
+.then((response) => {
+  setInputMusic('')
+  setInputArtist('')
+  setInputLinkMusic('')
+  setMusicas(response.data.result.tracks)
+  pegaMusica()
+  swal('Deu Ruim');
+    
+})
+
+.catch(() => 
+{
+  swal('Música adicionada com sucesso'); /*Funciona mas está bugado, pois ele deveria aceitar no then e nao está aceitando*/ 
+  });
+
+}
+
+const deletarMusica =  async (id) => {
+  const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'  
+  await axios.delete(`${linkDaApi}/${playlistId}/tracks/${id}`, {
+    headers: {
+      Authorization: "maiara-santos-franklin"
+    }})
+    .then((response) => {
+      setMusicas(response.data.result.tracks)
+      
+    })
+    .catch((erro) => {
+      swal('Música excluída com sucesso'); /*Funciona mas está bugado, pois ele deveria aceitar no then e nao está aceitando*/ 
+})
+
+}
+
+
 
 const ListOfMusic = musica.map((musica) => {
   return (
@@ -185,7 +233,8 @@ const ListOfMusic = musica.map((musica) => {
       artist={musica.artist}
       url={musica.url}
       musicId={musica.id}
-      deletar={''}
+      deletarMusica={deletarMusica}
+      
       />
   )
 });
@@ -193,8 +242,8 @@ const ListOfMusic = musica.map((musica) => {
     return (
         <StyleSection>
             <Header></Header>
-            <StyleContainerMusicDetails>            
-            <StyleSubtitle>Músicas desta Playlist</StyleSubtitle>
+            <StyleContainerMusicDetails>  
+            <StyleSubtitle>Músicas desta Playlist</StyleSubtitle> 
               <StyleContainerList>{ListOfMusic}</StyleContainerList>
             </StyleContainerMusicDetails>
             <StyleContainerCard>           
@@ -215,7 +264,7 @@ const ListOfMusic = musica.map((musica) => {
                 placeholder='URL da Música'
                 onChange={handleInputLinkMusic}
                 />
-                <StyleButton1>Adicionar a Playlist</StyleButton1>
+                <StyleButton1 onClick={adicionaMusica}>Adicionar a Playlist</StyleButton1>
                 <Link to="/playlists"><StyleButton2>Voltar para Playlists</StyleButton2></Link>
                 <Link to="/"><StyleButton2>Criar uma Playlist</StyleButton2></Link>                
             </StyleContainerCardMusic>
