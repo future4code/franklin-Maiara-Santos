@@ -10,7 +10,7 @@ Veja a aplicação aqui: labefy-project-finish-2022.surge.sh
 
 O Labefy é um gerenciador de músicas e playlists. Inspirado em uma versão simplificada do Spotify, com o Labefy é possível criar e excluir playlists, adicionar músicas as suas playlists favoritas e excluir aquelas que já não curte mais. Venha para o mundo Labefy <3
 
-## Papo técnico: O que vou aprender com esse projeto?
+## Papo técnico: Qual o objetivo do projeto?
 
 O projeto Labefy foi desenvolvido por mim durante o curso FullStack na escola Labenu. O objetivo da atividade era criar uma interface do zero para a aplicação e integrar com a API Labefy.
 
