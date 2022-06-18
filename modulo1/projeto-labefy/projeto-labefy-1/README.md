@@ -1,6 +1,6 @@
 # :star: Projeto Labefy
 
-<img src="./imagens/labefy-2.png" alt="interface Labefy"/>
+![alt text](https://github.com/future4code/franklin-Maiara-Santos/blob/projeto-labefy/modulo1/projeto-labefy/projeto-labefy-1/src/imagens/labefy-2.png)
 
 Seu novo gerenciador de músicas e playlists
 
