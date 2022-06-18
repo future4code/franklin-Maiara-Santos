@@ -1,5 +1,7 @@
 # :star: Projeto Labefy
 
+<img src="./imagens/labefy-2.png" alt="interface Labefy"/>
+
 Seu novo gerenciador de músicas e playlists
 
 ## Deploy
