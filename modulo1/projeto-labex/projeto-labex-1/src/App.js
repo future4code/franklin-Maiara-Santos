@@ -5,11 +5,13 @@ import HeaderAdmin from './components/HeaderAdmin';
 import axios from 'axios';
 import styled from 'styled-components'
 import HomePage from './pages/HomePage';
+import ListTripsPage from './pages/ListTripsPage.js'
 
 function App() {
   return (
     <div>
-       <HomePage></HomePage>
+       {/* <HomePage></HomePage> */}
+       <ListTripsPage></ListTripsPage>
     </div>
   );
 }

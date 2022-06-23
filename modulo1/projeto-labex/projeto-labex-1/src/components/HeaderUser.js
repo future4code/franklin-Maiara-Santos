@@ -11,7 +11,7 @@ const StyleMenu = styled.div`
  
 `
 
-const StyleTitle = styled.h2`
+const StyleTitle = styled.h1`
 color: #371A46;
 background-color: none;
 text-decoration: none;
