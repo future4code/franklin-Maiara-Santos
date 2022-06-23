@@ -17,6 +17,7 @@ background-color: none;
 text-decoration: none;
 font-size: 45px;
 margin-left: 40px;
+cursor: pointer;
 `
 
 function HeaderUser () {

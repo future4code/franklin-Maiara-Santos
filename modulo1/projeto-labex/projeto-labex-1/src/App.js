@@ -6,12 +6,18 @@ import axios from 'axios';
 import styled from 'styled-components'
 import HomePage from './pages/HomePage';
 import ListTripsPage from './pages/ListTripsPage.js'
+import AplicationFormPage from './pages/ApplicationFormPage';
+import LoginPage from './pages/LoginPage';
+import AdminHomePage from './pages/AdminHomePage';
 
 function App() {
   return (
     <div>
        {/* <HomePage></HomePage> */}
-       <ListTripsPage></ListTripsPage>
+       {/* <HomePage></HomePage> */}
+       {/* <AplicationFormPage></AplicationFormPage> */}
+       {/* <LoginPage></LoginPage> */}
+       <AdminHomePage></AdminHomePage>
     </div>
   );
 }

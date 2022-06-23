@@ -42,32 +42,34 @@ const StyleSubtitleInfos = styled.h3`
     color: #371A46;
     margin-top: -10px;
 `
-const StyleButtonWhiteBig = styled.button`
-    background-color: #fff;
-    border-radius: 25px;
-    width: 120px;
-    height: 40px;
-    border: 3px solid #371A46;
-    font-size: 17px;
-    font-weight: 700;
-    color: #371A46;
-`
-const StyleButtonYellowBig = styled.button`
-    background-color: #FFD922;
-    border-radius: 25px;
-    width: 120px;
-    height: 40px;
-    border: 3px solid #371A46;
-    font-size: 17px;
-    font-weight: 700;
-    color: #371A46;
-`
 const StyleDivButtons = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     margin-top: 20px;
 
+`
+const StyleButtonWhiteBig = styled.button`
+    background-color: #fff;
+    border-radius: 25px;
+    width: 140px;
+    height: 50px;
+    border: 3px solid #371A46;
+    font-size: 17px;
+    font-weight: 700;
+    color: #371A46;
+    cursor: pointer;
+`
+const StyleButtonYellowBig = styled.button`
+    background-color: #FFD922;
+    border-radius: 25px;
+    width: 140px;
+    height: 50px;
+    border: 3px solid #371A46;
+    font-size: 17px;
+    font-weight: 700;
+    color: #371A46;
+    cursor: pointer;
 `
 
 function HomePage () {
