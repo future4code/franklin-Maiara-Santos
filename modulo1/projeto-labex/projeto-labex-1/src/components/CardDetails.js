@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components'
-import ButtonWhite from "./ButtonWhite";
-
+import ButtonWhiteAdmin from "./ButtonWhiteAdmin";
+import ButtonYellow from "./ButtonYellow";
 
 const StyleDiv = styled.div`
     display: flex;
@@ -36,20 +36,16 @@ const StyleInfos = styled.h3`
 
 `
 
-function Card (props) {
-    
-
+function CardDetails (props) {
     return(
         <StyleDiv>
             <StyleTitleCard>{'Surfando em Saturno'}</StyleTitleCard> 
             <StyleInfos>{'Saturno'}</StyleInfos>
             <StyleInfos>{'21/06/2022'}</StyleInfos>
+            <StyleInfos>{'Duração: 90 dias'}</StyleInfos>
             <StyleInfos>{'Nenhum viajante galático pode ficar de fora dessa!'}</StyleInfos>
-            <StyleDivButtonsElements>
-                <ButtonWhite></ButtonWhite>                
-            </StyleDivButtonsElements>            
         </StyleDiv>
     )
 }
 
-export default Card;
+export default CardDetails;

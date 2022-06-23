@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components'
 import HeaderUser from "../components/HeaderUser";
 import Astronauta0 from '../imagens/astronauta-0.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const StyleSection = styled.section`
     background-color: #3AAAFF;
@@ -73,6 +74,16 @@ const StyleButtonYellowBig = styled.button`
 `
 
 function HomePage () {
+    const navigate = useNavigate()
+
+    const GoToListTripPage = () =>{        
+        navigate ('/trips/list')
+      }
+
+      const GoToLoginPage = () =>{        
+        navigate ('/login')
+      }
+
     return(
         <StyleSection>
            <HeaderUser></HeaderUser> 
@@ -82,8 +93,8 @@ function HomePage () {
                 <StyleSubtitle>Sua viagem espacial começa aqui</StyleSubtitle>
                 <StyleSubtitleInfos>Confira as opções e agende hoje mesmo</StyleSubtitleInfos>
                 <StyleDivButtons>
-                    <StyleButtonWhiteBig>Explorar</StyleButtonWhiteBig>
-                    <StyleButtonYellowBig>Admin</StyleButtonYellowBig>
+                    <StyleButtonWhiteBig onClick={GoToListTripPage}>Explorar</StyleButtonWhiteBig>
+                    <StyleButtonYellowBig onClick={GoToLoginPage}>Admin</StyleButtonYellowBig>
                 </StyleDivButtons>                
             </StyleDivInfos>
            </StyleDivElements>

@@ -1,8 +1,9 @@
 import React from "react";
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom';
 
 const StyleButtonWhiteLittle = styled.button`
-    background-color: #fff;
+    background-color: #FFD922; 
     border-radius: 25px;
     width: 110px;
     height: 42px;
@@ -10,11 +11,19 @@ const StyleButtonWhiteLittle = styled.button`
     font-size: 15px;
     font-weight: 700;
     color: #371A46;
+    cursor: pointer;
 `
 
 function ButtonWhite () {
+
+    const navigate = useNavigate()
+
+    const GoToApplication = () =>{    
+      navigate ('/trips/application')
+    }
+
     return(
-        <StyleButtonWhiteLittle>Inscrever</StyleButtonWhiteLittle>
+        <StyleButtonWhiteLittle onClick={GoToApplication}>Inscrever</StyleButtonWhiteLittle>
     )
 }
 

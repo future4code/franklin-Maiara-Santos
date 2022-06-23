@@ -17,7 +17,8 @@ const StyleSubtitle = styled.h2`
 `
 
 function ListTripPage () {
-    return(
+
+        return(
         <StyleSection>
             <HeaderUser></HeaderUser>
             <StyleSubtitle>Lista de viagens</StyleSubtitle>

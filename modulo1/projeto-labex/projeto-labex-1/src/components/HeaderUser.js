@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-// import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 const StyleMenu = styled.div`
   width: 100%
@@ -21,11 +21,16 @@ cursor: pointer;
 `
 
 function HeaderUser () {
+
+  const navigate = useNavigate()
+
+  const GoToHome = () =>{    
+    navigate ('/')
+  }
+
   return (
-    <StyleMenu> 
-        {/* <Link to="/"><StyleTitle>Labefy</StyleTitle></Link>   */}
-      <StyleTitle>Labex</StyleTitle>     
-                     
+    <StyleMenu>        
+      <StyleTitle onClick={GoToHome}>Labex</StyleTitle>
     </StyleMenu>
     )
 }
