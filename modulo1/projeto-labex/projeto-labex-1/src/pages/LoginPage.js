@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from 'styled-components';
 import HeaderUser from "../components/HeaderUser";
 import Cachorro1 from '../imagens/cachorro-1.jpg';
@@ -78,6 +78,18 @@ const StyleButton = styled.button`
 `
 
 function LoginPage () {
+
+    const [InputEmail, setInputEmail] = useState ('')
+    const [InputSenha, setInputSenha] = useState ('')
+
+    const handleInputName = (event) => {
+        setInputEmail(event.target.value)
+    }
+    
+    const handleInputAge = (event) => {
+        setInputSenha(event.target.value)
+    }
+
     return(
         <StyleSection>
            <HeaderUser></HeaderUser> 
@@ -87,8 +99,8 @@ function LoginPage () {
                 <StyleSubtitle>Faça login para começar</StyleSubtitle>
                 <StyleSubtitleInfos>E editar suas viagens</StyleSubtitleInfos>
                 <StyleDivInputs>
-                    <StyleInput placeholder="Digite seu e-mail"></StyleInput>
-                    <StyleInput placeholder="Digite sua senha"></StyleInput>                
+                    <StyleInput value={InputEmail} onChange={handleInputName} placeholder="Digite seu e-mail"></StyleInput>
+                    <StyleInput value={InputSenha} onChange={handleInputAge} placeholder="Digite sua senha"></StyleInput>                
                 </StyleDivInputs>                
                 <StyleDivButtons>
                     <StyleButton>Entrar</StyleButton>              

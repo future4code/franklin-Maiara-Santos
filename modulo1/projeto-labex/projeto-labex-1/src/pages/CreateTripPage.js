@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from 'styled-components';
 import HeaderAdmin from "../components/HeaderAdmin";
 import Cachorro2 from '../imagens/cachorro-2.jpg';
@@ -80,6 +80,34 @@ const StyleButton = styled.button`
 `
 
 const CreateTripPage = () => {
+
+    const [InputNameTrip, setInputNameTrip] = useState ('')
+    const [InputPlanet, setInputPlanet] = useState ('')
+    const [InputDate, setInputDate] = useState ('')
+    const [InputDescription, setInputDescription] = useState ('')
+    const [InputDurationTrip, setInputDurationTrip] = useState ('')
+
+    const handleInputNameTrip = (event) => {
+        setInputNameTrip(event.target.value)
+    }
+
+    const handleInputPlanet = (event) => {
+        setInputPlanet(event.target.value)
+    }
+
+    const handleInputDate = (event) => {
+        setInputDate(event.target.value)
+    }
+
+    const handleInputDescription = (event) => {
+        setInputDescription(event.target.value)
+    }
+
+    const handleInputDurationTrip = (event) => {
+        setInputDurationTrip(event.target.value)
+    }
+
+
     return(
         <StyleSection>
            <HeaderAdmin></HeaderAdmin> 
@@ -89,11 +117,11 @@ const CreateTripPage = () => {
                 <StyleSubtitle>Crie uma nova viagem</StyleSubtitle>
                 <StyleSubtitleInfos>E proporcione uma aventura aos seus clientes</StyleSubtitleInfos>
                 <StyleDivInputs>
-                    <StyleInput placeholder="Nome da Viagem"></StyleInput>
-                    <StyleInput placeholder="Qual o planeta?"></StyleInput>
-                    <StyleInput placeholder="Data"></StyleInput>
-                    <StyleInput placeholder="Descrição da viagem"></StyleInput>
-                    <StyleInput placeholder="Duração da viagem"></StyleInput>                    
+                    <StyleInput value={InputNameTrip} onChange={handleInputNameTrip} placeholder="Nome da Viagem"></StyleInput>
+                    <StyleInput value={InputPlanet} onChange={handleInputPlanet} placeholder="Qual o planeta?"></StyleInput>
+                    <StyleInput value={InputDate} onChange={handleInputDate} placeholder="Data"></StyleInput>
+                    <StyleInput value={InputDescription} onChange={handleInputDescription} placeholder="Descrição da viagem"></StyleInput>
+                    <StyleInput value={InputDurationTrip} onChange={handleInputDurationTrip} placeholder="Duração da viagem"></StyleInput>                    
                 </StyleDivInputs>                
                 <StyleDivButtons>
                     <StyleButton>Cadastrar</StyleButton>              

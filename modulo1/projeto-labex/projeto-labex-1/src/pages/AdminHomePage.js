@@ -46,14 +46,8 @@ const StyleSubtitle = styled.h2`
     text-align: center;
        
 `
-
  function AdminHomePage () {
-
-    // const GoToHome = () =>{
-    //     const navigate = useNavigate()
-    //     navigate ('/')
-    //   }
-        
+         
     return(
         <StyleSection>
             <StyleMenu>         

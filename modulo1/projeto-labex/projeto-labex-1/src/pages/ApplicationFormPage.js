@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from 'styled-components';
 import HeaderUser from "../components/HeaderUser";
 import Astronauta4 from '../imagens/astronauta-4.png';
+
 
 const StyleSection = styled.section`
     background-color: #3AAAFF;
@@ -90,6 +91,38 @@ const StyleButton = styled.button`
 `
 
 const AplicationFormPage = () => {
+
+const [InputName, setInputName] = useState ('')
+const [InputAge, setInputAge] = useState ('')
+const [InputWhy, setInputWhy] = useState ('')
+const [InputProfession, setInputProfession] = useState ('')
+const [InputCountry, setInputCountry] = useState ('')
+const [InputSelect, setInputSelect] = useState ('')
+
+const handleInputName = (event) => {
+    setInputName(event.target.value)
+}
+
+const handleInputAge = (event) => {
+    setInputAge(event.target.value)
+}
+
+const handleInputWhy = (event) => {
+    setInputWhy(event.target.value)
+}
+
+const handleInputProfession = (event) => {
+    setInputProfession(event.target.value)
+}
+
+const handleInputCountry = (event) => {
+    setInputCountry(event.target.value)
+}
+
+const handleInputSelect = (event) => {
+    setInputSelect(event.target.value)
+}
+
     return(
         <StyleSection>
            <HeaderUser></HeaderUser> 
@@ -99,19 +132,19 @@ const AplicationFormPage = () => {
                 <StyleSubtitle>Se Inscreva para começar</StyleSubtitle>
                 <StyleSubtitleInfos>E seja o nosso próximo viajante</StyleSubtitleInfos>
                 <StyleDivInputs>
-                    <StyleInput placeholder="Digite seu nome"></StyleInput>
-                    <StyleInput placeholder="Digite sua idade"></StyleInput>
-                    <StyleInput placeholder="Nos fale porque você é um bom candidato"></StyleInput>
-                    <StyleInput placeholder="Digite sua Profissão"></StyleInput>
-                    <StyleInput placeholder="Digite seu País"></StyleInput>
+                    <StyleInput onChange={handleInputName} value={InputName} placeholder="Digite seu nome"></StyleInput>
+                    <StyleInput onChange={handleInputAge} value={InputAge} placeholder="Digite sua idade"></StyleInput>
+                    <StyleInput onChange={handleInputWhy} value={InputWhy} placeholder="Nos fale porque você é um bom candidato"></StyleInput>
+                    <StyleInput onChange={handleInputProfession} value={InputProfession} placeholder="Digite sua Profissão"></StyleInput>
+                    <StyleInput onChange={handleInputCountry} value={InputCountry} placeholder="Digite seu País"></StyleInput>
                     <StyleParagraphInfos>Selecione a viagem que deseja:</StyleParagraphInfos>
-                    <StyleSelect value="Selecione Sua Viagem">
+                    <StyleSelect onChange={handleInputSelect} value={InputSelect}>
                         <option value="Teste Mockado"></option>
                         <option value="Teste Mockado2"></option>
                     </StyleSelect>
                 </StyleDivInputs>                
                 <StyleDivButtons>
-                    <StyleButton>Cadastrar</StyleButton>              
+                    <StyleButton onClick={''}>Cadastrar</StyleButton>              
                 </StyleDivButtons>                 
             </StyleDivInfos>
            </StyleDivElements>
