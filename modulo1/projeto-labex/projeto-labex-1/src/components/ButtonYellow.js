@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components'
+import { useNavigate } from "react-router-dom";
 
 const StyleButtonYellowLittle = styled.button`
     background-color: #FFD922;
@@ -13,8 +14,15 @@ const StyleButtonYellowLittle = styled.button`
 `
 
 function ButtonYellow () {
+
+    const navigate = useNavigate ()
+
+    const GoToTripDetails = () =>{    
+        navigate ('/admin/trips/create')
+        }
+
     return(
-        <StyleButtonYellowLittle>Detalhes</StyleButtonYellowLittle>
+        <StyleButtonYellowLittle onClick={GoToTripDetails} >Detalhes</StyleButtonYellowLittle>
     )
 }
 

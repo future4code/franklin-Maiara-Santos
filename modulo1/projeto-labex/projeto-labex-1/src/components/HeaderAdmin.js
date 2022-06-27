@@ -23,7 +23,7 @@ function HeaderAdmin () {
 
   const navigate = useNavigate()
 
-  const GoToHome = () =>{    
+  const GoToHome = () => {    
     navigate ('/')
   }
 

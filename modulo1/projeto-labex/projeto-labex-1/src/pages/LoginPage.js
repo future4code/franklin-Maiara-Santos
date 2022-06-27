@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import styled from 'styled-components';
 import HeaderUser from "../components/HeaderUser";
 import Cachorro1 from '../imagens/cachorro-1.jpg';
+import axios from "axios";
+import { useNavigate} from 'react-router-dom'
+
 
 const StyleSection = styled.section`
     background-color: #3AAAFF;
@@ -19,7 +22,7 @@ const StyleDivElements = styled.div`
     align-items: center;
     justify-content: center;
     margin: auto;
-    margin-top: 90px;
+    margin-top: 60px;
     gap: 150px;
 `
 const StyleSubtitle = styled.h2`
@@ -33,7 +36,7 @@ const StyleDivInfos = styled.div`
     align-itens: center;
     display: flex;
     flex-direction: column;    
-    margin-top: 50px;
+    margin-top: 40px;
     text-align: center;
     justify-content: center;  
        
@@ -60,10 +63,11 @@ const StyleDivInputs = styled.div`
 
 const StyleInput = styled.input`
     width: 300px;
-    height: 27px;
+    height: 30px;
     border-radius: 10px;
     border: 1.2px solid #371A46;
     font-weight: 600;
+    font-size: 16px;
 `
 const StyleButton = styled.button`
     background-color: #FFD922;
@@ -80,7 +84,10 @@ const StyleButton = styled.button`
 function LoginPage () {
 
     const [InputEmail, setInputEmail] = useState ('')
-    const [InputSenha, setInputSenha] = useState ('')
+    const [InputSenha, setInputSenha] = useState ('')   
+
+    const navigate = useNavigate ()
+    
 
     const handleInputName = (event) => {
         setInputEmail(event.target.value)
@@ -90,7 +97,31 @@ function LoginPage () {
         setInputSenha(event.target.value)
     }
 
-    return(
+    console.log (InputEmail)
+    console.log (InputSenha)
+
+    // Criando a requisição que faz o login
+    const SubmitLogin = () => {        
+        const body = {
+            email: InputEmail,
+            password: InputSenha
+        }
+
+        axios.post ('https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/login', body)
+        .then ((response) => {
+            // console.log('Deu certo:', response.data);      
+            localStorage.setItem('token', response.data.token);
+            navigate ('/admin/trips/list');
+            // alert('Deu certo');  
+                     
+        })
+        .catch ((error) => {
+            console.log('Deu errado:', error.data)
+            alert('Deu Ruim') 
+        })
+    }
+
+       return(
         <StyleSection>
            <HeaderUser></HeaderUser> 
            <StyleDivElements>
@@ -100,15 +131,16 @@ function LoginPage () {
                 <StyleSubtitleInfos>E editar suas viagens</StyleSubtitleInfos>
                 <StyleDivInputs>
                     <StyleInput value={InputEmail} onChange={handleInputName} placeholder="Digite seu e-mail"></StyleInput>
-                    <StyleInput value={InputSenha} onChange={handleInputAge} placeholder="Digite sua senha"></StyleInput>                
+                    <StyleInput type='password' value={InputSenha} onChange={handleInputAge} placeholder="Digite sua senha"></StyleInput>                
                 </StyleDivInputs>                
                 <StyleDivButtons>
-                    <StyleButton>Entrar</StyleButton>              
+                    <StyleButton onClick={SubmitLogin}>Entrar</StyleButton>              
                 </StyleDivButtons>                 
             </StyleDivInfos>
            </StyleDivElements>
         </StyleSection>
     )
 }
+//
 
 export default LoginPage;

@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import styled from 'styled-components';
 import HeaderAdmin from "../components/HeaderAdmin";
 import Cachorro2 from '../imagens/cachorro-2.jpg';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StyleSection = styled.section`
     background-color: #3AAAFF;
@@ -107,6 +109,13 @@ const CreateTripPage = () => {
         setInputDurationTrip(event.target.value)
     }
 
+    const navigate = useNavigate ()
+    
+    useEffect (()=> {
+        if (!localStorage.getItem('token')){
+            navigate ('/')
+        }           
+    }, [])
 
     return(
         <StyleSection>

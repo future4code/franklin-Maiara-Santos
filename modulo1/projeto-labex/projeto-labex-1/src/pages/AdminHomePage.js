@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import CardAdmin from "../components/CardAdmin";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const StyleSection = styled.section`
@@ -37,6 +39,7 @@ const StyleButton = styled.button`
     color: #371A46;
     border-radius: 1px solid #371A46;
     margin-right: 40px;
+    cursor: pointer;
 
 `
 
@@ -47,12 +50,28 @@ const StyleSubtitle = styled.h2`
        
 `
  function AdminHomePage () {
-         
+
+   const navigate = useNavigate ()
+
+   const goToCreateTrip = () => {
+    navigate ('/admin/trips/:id')
+   }
+
+     useEffect (()=> {
+        if (!localStorage.getItem('token')){
+            navigate ('/')
+        }           
+    }, [])
+
+    const GoToHome = () =>{    
+    navigate ('/')
+    }
+
     return(
         <StyleSection>
             <StyleMenu>         
-                <StyleTitle>Labex</StyleTitle>
-                <StyleButton>Criar uma nova viagem</StyleButton>
+                <StyleTitle onClick={GoToHome}>Labex</StyleTitle>
+                <StyleButton onClick={goToCreateTrip}>Criar uma nova viagem</StyleButton>
             </StyleMenu>
             <StyleSubtitle>Lista de viagens</StyleSubtitle>
             <div>
