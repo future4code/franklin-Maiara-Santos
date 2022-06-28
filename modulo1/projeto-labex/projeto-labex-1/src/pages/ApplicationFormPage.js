@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import styled from 'styled-components';
 import HeaderUser from "../components/HeaderUser";
 import Astronauta4 from '../imagens/astronauta-4.png';
+import axios from "axios";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 
 const StyleSection = styled.section`
@@ -89,6 +92,11 @@ const StyleButton = styled.button`
     color: #371A46;
     cursor: pointer;
 `
+const StyleOption = styled.option`
+    font-weight: 500;
+    font-size: 16px;
+    color: #000;
+`
 
 const AplicationFormPage = () => {
 
@@ -98,6 +106,8 @@ const [InputWhy, setInputWhy] = useState ('')
 const [InputProfession, setInputProfession] = useState ('')
 const [InputCountry, setInputCountry] = useState ('')
 const [InputSelect, setInputSelect] = useState ('')
+const [viagens, setViagens] = useState([])
+const { id } = useParams()
 
 const handleInputName = (event) => {
     setInputName(event.target.value)
@@ -123,6 +133,43 @@ const handleInputSelect = (event) => {
     setInputSelect(event.target.value)
 }
 
+const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trips'
+    
+    const pegaViagens = () => {
+        axios.get (linkDaApi)
+        .then((response) => {
+            setViagens(response.data.trips)
+        })
+        .catch((error) => {            
+        })
+    }    
+    
+    const listaDeViagens = viagens.map ((viagem) => {
+        return <StyleOption key={viagem.id}>{viagem.name}</StyleOption>
+    })
+
+    useEffect (pegaViagens, [])
+
+    const aplicarParaViagem = (event) => {
+        event.preventDefault();
+        const body = {
+            name: InputName,
+            age: InputAge,
+            applicationText: InputWhy,
+            profession: InputProfession,
+            country: InputCountry
+        };
+        axios
+        .post(`${linkDaApi}${id}/apply`, body)
+        .then((response) => {
+            alert('Sua inscrição foi realizada com sucesso!')
+        })
+        .catch((error) => {
+            console.log(error.message)
+            alert('Não foi possível fazer sua inscrição. Por favor, tente novamente')
+        })   
+    };
+    
     return(
         <StyleSection>
            <HeaderUser></HeaderUser> 
@@ -139,12 +186,11 @@ const handleInputSelect = (event) => {
                     <StyleInput onChange={handleInputCountry} value={InputCountry} placeholder="Digite seu País"></StyleInput>
                     <StyleParagraphInfos>Selecione a viagem que deseja:</StyleParagraphInfos>
                     <StyleSelect onChange={handleInputSelect} value={InputSelect}>
-                        <option value="Teste Mockado"></option>
-                        <option value="Teste Mockado2"></option>
+                        {listaDeViagens}
                     </StyleSelect>
                 </StyleDivInputs>                
                 <StyleDivButtons>
-                    <StyleButton onClick={''}>Cadastrar</StyleButton>              
+                    <StyleButton onClick={aplicarParaViagem}>Aplicar</StyleButton>              
                 </StyleDivButtons>                 
             </StyleDivInfos>
            </StyleDivElements>

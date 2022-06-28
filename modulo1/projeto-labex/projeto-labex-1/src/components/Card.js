@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components'
 import ButtonWhite from "./ButtonWhite";
+import { useNavigate } from 'react-router-dom';
 
 
 const StyleDiv = styled.div`
@@ -27,7 +28,7 @@ const StyleTitleCard = styled.h3`
 
 `
 
-const StyleInfos = styled.h3`
+const StyleInfos = styled.p`
     font-size: 18px;
     font-weight: 600;
     text-align: center;
@@ -36,17 +37,36 @@ const StyleInfos = styled.h3`
 
 `
 
-function Card (props) {
+const StyleButtonWhite = styled.button`
+    background-color: #FFD922; 
+    border-radius: 25px;
+    width: 110px;
+    height: 42px;
+    border: 3px solid #371A46;
+    font-size: 15px;
+    font-weight: 700;
+    color: #371A46;
+    cursor: pointer;
+`
+
+
+function Card (props) {  
     
+    const navigate = useNavigate()
+
+    const GoToApplication = (id) =>{    
+      navigate (`/trips/application/${id}`)
+    }
+
 
     return(
         <StyleDiv>
-            <StyleTitleCard>{'Surfando em Saturno'}</StyleTitleCard> 
-            <StyleInfos>{'Saturno'}</StyleInfos>
-            <StyleInfos>{'21/06/2022'}</StyleInfos>
-            <StyleInfos>{'Nenhum viajante galático pode ficar de fora dessa!'}</StyleInfos>
+            <StyleTitleCard>{props.viagem.name}</StyleTitleCard> 
+            <StyleInfos>{props.viagem.planet}</StyleInfos>
+            <StyleInfos>{props.viagem.date}</StyleInfos>
+            <StyleInfos>{props.viagem.description}</StyleInfos>
             <StyleDivButtonsElements>
-                <ButtonWhite></ButtonWhite>                
+                <StyleButtonWhite onClick={()=> {GoToApplication(props.viagem.id)}}>Inscrever</StyleButtonWhite>             
             </StyleDivButtonsElements>            
         </StyleDiv>
     )

@@ -4,6 +4,7 @@ import HeaderAdmin from "../components/HeaderAdmin";
 import Cachorro2 from '../imagens/cachorro-2.jpg';
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const StyleSection = styled.section`
     background-color: #3AAAFF;
@@ -88,7 +89,8 @@ const CreateTripPage = () => {
     const [InputDate, setInputDate] = useState ('')
     const [InputDescription, setInputDescription] = useState ('')
     const [InputDurationTrip, setInputDurationTrip] = useState ('')
-
+    
+    
     const handleInputNameTrip = (event) => {
         setInputNameTrip(event.target.value)
     }
@@ -117,7 +119,7 @@ const CreateTripPage = () => {
         }           
     }, [])
 
-    return(
+        return(
         <StyleSection>
            <HeaderAdmin></HeaderAdmin> 
            <StyleDivElements>
@@ -133,7 +135,7 @@ const CreateTripPage = () => {
                     <StyleInput value={InputDurationTrip} onChange={handleInputDurationTrip} placeholder="Duração da viagem"></StyleInput>                    
                 </StyleDivInputs>                
                 <StyleDivButtons>
-                    <StyleButton>Cadastrar</StyleButton>              
+                    <StyleButton onClick={''}>Cadastrar</StyleButton>              
                 </StyleDivButtons>                 
             </StyleDivInfos>
            </StyleDivElements>

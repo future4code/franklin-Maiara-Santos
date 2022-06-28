@@ -18,8 +18,8 @@ function ButtonWhite () {
 
     const navigate = useNavigate()
 
-    const GoToApplication = () =>{    
-      navigate ('/trips/application')
+    const GoToApplication = (id) =>{    
+      navigate (`/trips/application/${id}`)
     }
 
     return(
