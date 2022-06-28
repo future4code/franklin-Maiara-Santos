@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import HeaderUser from "../components/HeaderUser";
 import axios from "axios";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 const StyleSection = styled.section`
     background-color: #3AAAFF;

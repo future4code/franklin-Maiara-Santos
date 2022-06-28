@@ -3,12 +3,15 @@ import styled from "styled-components";
 import CardAdmin from "../components/CardAdmin";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from 'axios'
 
 
 const StyleSection = styled.section`
     background-color: #3AAAFF;
-    height: 935px;
+    height: auto;
     width: 100%;
+    padding-bottom: 20px;
 `
 
 const StyleMenu = styled.div`
@@ -49,15 +52,41 @@ const StyleSubtitle = styled.h2`
     text-align: center;
        
 `
+const StyleListTrips = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+    justify-content: center;
+`
+
  function AdminHomePage () {
 
-   const navigate = useNavigate ()
+   const [viagens, setViagens] = useState([])
 
+   const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trips'
+
+   const navigate = useNavigate ()
    const goToCreateTrip = () => {
     navigate ('/admin/trips/:id')
    }
 
-     useEffect (()=> {
+   const pegaViagens = () => {
+    axios.get (linkDaApi)
+    .then((response) => {
+        setViagens(response.data.trips)
+    })
+    .catch((error) => {            
+    })
+}    
+
+const listaDeViagens = viagens.map ((viagem) => {
+    return <CardAdmin viagem={viagem} />
+})
+    
+    useEffect (pegaViagens, [])
+
+    useEffect (()=> {
         if (!localStorage.getItem('token')){
             navigate ('/')
         }           
@@ -67,6 +96,7 @@ const StyleSubtitle = styled.h2`
     navigate ('/')
     }
 
+
     return(
         <StyleSection>
             <StyleMenu>         
@@ -74,9 +104,9 @@ const StyleSubtitle = styled.h2`
                 <StyleButton onClick={goToCreateTrip}>Criar uma nova viagem</StyleButton>
             </StyleMenu>
             <StyleSubtitle>Lista de viagens</StyleSubtitle>
-            <div>
-                <CardAdmin></CardAdmin>
-            </div>
+            <StyleListTrips>
+                {listaDeViagens}
+            </StyleListTrips>
         </StyleSection>
     )
 }

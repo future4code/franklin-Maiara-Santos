@@ -39,11 +39,10 @@ const StyleInfos = styled.h3`
 function CardDetails (props) {
     return(
         <StyleDiv>
-            <StyleTitleCard>{'Surfando em Saturno'}</StyleTitleCard> 
-            <StyleInfos>{'Saturno'}</StyleInfos>
-            <StyleInfos>{'21/06/2022'}</StyleInfos>
-            <StyleInfos>{'Duração: 90 dias'}</StyleInfos>
-            <StyleInfos>{'Nenhum viajante galático pode ficar de fora dessa!'}</StyleInfos>
+            <StyleTitleCard>{props.viagem.name}</StyleTitleCard> 
+            <StyleInfos>{props.viagem.planet}</StyleInfos>
+            <StyleInfos>{props.viagem.date}</StyleInfos>
+            <StyleInfos>{props.viagem.description}</StyleInfos>
         </StyleDiv>
     )
 }

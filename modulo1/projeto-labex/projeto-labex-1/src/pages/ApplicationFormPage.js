@@ -133,22 +133,22 @@ const handleInputSelect = (event) => {
     setInputSelect(event.target.value)
 }
 
-const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trips'
+const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trips/'
     
-    const pegaViagens = () => {
-        axios.get (linkDaApi)
-        .then((response) => {
-            setViagens(response.data.trips)
-        })
-        .catch((error) => {            
-        })
-    }    
+    // const pegaViagens = () => {
+    //     axios.get (linkDaApi)
+    //     .then((response) => {
+    //         setViagens(response.data.trips)
+    //     })
+    //     .catch((error) => {            
+    //     })
+    // }    
     
-    const listaDeViagens = viagens.map ((viagem) => {
-        return <StyleOption key={viagem.id}>{viagem.name}</StyleOption>
-    })
+    // // const listaDeViagens = viagens.map ((viagem) => {
+    // //     return <StyleOption key={viagem.id}>{viagem.name}</StyleOption>
+    // // })
 
-    useEffect (pegaViagens, [])
+    // useEffect (pegaViagens, [])
 
     const aplicarParaViagem = (event) => {
         event.preventDefault();
@@ -184,10 +184,9 @@ const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/darv
                     <StyleInput onChange={handleInputWhy} value={InputWhy} placeholder="Nos fale porque você é um bom candidato"></StyleInput>
                     <StyleInput onChange={handleInputProfession} value={InputProfession} placeholder="Digite sua Profissão"></StyleInput>
                     <StyleInput onChange={handleInputCountry} value={InputCountry} placeholder="Digite seu País"></StyleInput>
-                    <StyleParagraphInfos>Selecione a viagem que deseja:</StyleParagraphInfos>
+                    {/* <StyleParagraphInfos>Selecione a viagem que deseja:</StyleParagraphInfos>
                     <StyleSelect onChange={handleInputSelect} value={InputSelect}>
-                        {listaDeViagens}
-                    </StyleSelect>
+                        {listaDeViagens}</StyleSelect> */}
                 </StyleDivInputs>                
                 <StyleDivButtons>
                     <StyleButton onClick={aplicarParaViagem}>Aplicar</StyleButton>              

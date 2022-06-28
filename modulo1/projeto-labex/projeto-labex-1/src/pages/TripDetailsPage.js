@@ -5,6 +5,7 @@ import HeaderAdmin from "../components/HeaderAdmin";
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 
 const StyleSection = styled.section`
@@ -25,13 +26,12 @@ function TripDetailsPage () {
 // Usando useEffect para fazer a requisição assim que a página recarregar. Pois recarregar a página está FORA do escopo da requisição em si
 
 const {id} = useParams()
+const [viagens, setViagens] = useState([])
 
-// Arrumar o ID depois para funcionar de modo dinâmico
-
-    useEffect(() => {
+    const PegarDetalhes = () => {
         const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trip/'
         const token = localStorage.getItem('token')
-        axios.get ('https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trip/NoIFVcOiSgTKTIPVZwXS', {
+        axios.get (`${linkDaApi}${id}/apply`, {
             headers: {
                 auth: token
             } 
@@ -41,8 +41,10 @@ const {id} = useParams()
         })
         .catch((error) => {
             console.log('Deu errado:', error.response)
-        })
-    }, [])
+        })    
+    }
+        
+    useEffect (PegarDetalhes, [])
 
     const navigate = useNavigate ()
 
@@ -50,15 +52,18 @@ const {id} = useParams()
         if (!localStorage.getItem('token')){
             navigate ('/')
         }           
-    }, [])
-    
+    }, [])    
+
+    const listaDeViagens = viagens.map ((viagem) => {
+        return <CardDetails viagem={viagem} />
+    })
+
+
     return(
         <StyleSection>
             <HeaderAdmin></HeaderAdmin>
             <StyleSubtitle>Detalhes da Viagem</StyleSubtitle>
-            <div>
-                <CardDetails></CardDetails>
-            </div>
+            {listaDeViagens}
             <StyleSubtitle>Candidatos</StyleSubtitle>
         </StyleSection>
     )
