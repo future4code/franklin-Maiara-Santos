@@ -1,19 +1,19 @@
-const goToLogin = () => {
+export const goToLogin = (navigate) => {
     navigate ('/login')
 }
 
-const goToSignUp = () => {
+export const goToSignUp = (navigate) => {
     navigate ('/cadastro')
 }
 
-const goToAddRecipes = () => {
+export const goToAddRecipes = (navigate) => {
     navigate ('/adicionar-receita')
 }
 
-const goToRecipesDetail = () => {
-    navigate (`/detalhe/${id}`)
+export const goToRecipesDetail = (navigate, id) => {
+    navigate (`/detalhe/:id`)
 }
 
-const goToRecipeList = () => {
+export const goToRecipesList = (navigate) => {
     navigate ('/')
 }
