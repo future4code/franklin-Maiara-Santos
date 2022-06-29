@@ -3,14 +3,18 @@ import { InputContainer } from "./styled";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import useForm from "../../hooks/useForm";
+import {login} from "../../services/user"
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
     const [form, onChange, clear] = useForm({ email: "", password: "" })
+    const navigate = useNavigate()
 
     const onSubmitForm = (event) => {
-        console.log(form)
         event.preventDefault()
-    }
+        login(form, clear, navigate)
+
+    }   
 
     return (
         <InputContainer>

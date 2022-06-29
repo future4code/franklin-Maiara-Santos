@@ -6,13 +6,13 @@ import { Button } from '@mui/material'
 import LoginForm from './LoginForm';
 import {goToSignUp} from "../../routes/coordinator"
 import {useNavigate} from "react-router-dom";
+import useUnprotectedPage from '../../hooks/useUnprotectedPage';
 
-const LoginPage = () => {
+const LoginPage = () => 
+{
+    useUnprotectedPage()
+
     const navigate = useNavigate()
-    const [form, onChange, clear] = useForm({email: "", password: ""})
-    const onSubmitForm = () => {
-
-    }
 
     return (
         <ScreenContainer>

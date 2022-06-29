@@ -1,8 +1,12 @@
 import { Button } from '@mui/material';
 import React from 'react'
+import useProtectedPage from '../../hooks/useProtectPage';
 
 
 function RecipesListPage () {
+
+    useProtectedPage()
+    
     return (
         <div>
             
