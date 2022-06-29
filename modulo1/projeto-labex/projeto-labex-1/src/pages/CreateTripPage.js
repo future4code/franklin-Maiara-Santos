@@ -5,11 +5,13 @@ import Cachorro2 from '../imagens/cachorro-2.jpg';
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import swal from 'sweetalert'
 
 const StyleSection = styled.section`
     background-color: #3AAAFF;
     height: 935px;
     width: 100%;
+    min-height: 930px;
 `
 const StyleImg = styled.img`
     width: 450px;
@@ -119,6 +121,34 @@ const CreateTripPage = () => {
         }           
     }, [])
 
+    const CriarViagem = () => {
+        const body = {
+            name: InputNameTrip,
+            planet: InputPlanet,
+            date: InputDate,
+            description: InputDescription,
+            durationInDays: InputDurationTrip
+        }
+    
+        axios
+          .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maiara-santos-franklin/trips`, body , {
+            headers: { auth: localStorage.getItem("token") }
+          } )
+
+          .then((response) => {
+            swal("Viagem Criada com sucesso!")
+            setInputNameTrip('')   
+            setInputPlanet('')
+            setInputDate('')
+            setInputDescription('')
+            setInputDurationTrip('')
+
+          })
+          .catch((erro) => {
+            swal("Deu Ruim")         
+          })
+      }
+
         return(
         <StyleSection>
            <HeaderAdmin></HeaderAdmin> 
@@ -135,7 +165,7 @@ const CreateTripPage = () => {
                     <StyleInput value={InputDurationTrip} onChange={handleInputDurationTrip} placeholder="Duração da viagem"></StyleInput>                    
                 </StyleDivInputs>                
                 <StyleDivButtons>
-                    <StyleButton onClick={''}>Cadastrar</StyleButton>              
+                    <StyleButton onClick={CriarViagem}>Cadastrar</StyleButton>              
                 </StyleDivButtons>                 
             </StyleDivInfos>
            </StyleDivElements>

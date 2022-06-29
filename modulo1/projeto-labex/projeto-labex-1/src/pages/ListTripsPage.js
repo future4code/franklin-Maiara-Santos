@@ -11,6 +11,7 @@ const StyleSection = styled.section`
     height: auto;
     width: 100%;
     padding-bottom: 20px;
+    min-height: 930px;
 `
 
 const StyleSubtitle = styled.h2`
@@ -31,7 +32,7 @@ function ListTripPage () {
 
     const [viagens, setViagens] = useState([])
 
-    const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trips'
+    const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/maiara-santos-franklin/trips'
     
     const pegaViagens = () => {
         axios.get (linkDaApi)

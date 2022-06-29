@@ -11,6 +11,7 @@ const StyleSection = styled.section`
     background-color: #3AAAFF;
     height: 935px;
     width: 100%;
+    min-height: 930px;
 `
 const StyleImg = styled.img`
     width: 450px;
@@ -133,7 +134,7 @@ const handleInputSelect = (event) => {
     setInputSelect(event.target.value)
 }
 
-const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trips/'
+const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/maiara-santos-franklin/trips/'
     
     // const pegaViagens = () => {
     //     axios.get (linkDaApi)
