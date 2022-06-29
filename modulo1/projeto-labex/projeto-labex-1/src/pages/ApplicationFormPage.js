@@ -74,14 +74,9 @@ const StyleInput = styled.input`
     border-radius: 10px;
     border: 1.2px solid #371A46;
     font-weight: 600;
+
 `
-const StyleSelect = styled.select`
-    width: 308px;
-    height: 27px;
-    border-radius: 10px;
-    border: 1.2px solid #371A46;
-    font-weight: 500;
-`
+
 const StyleButton = styled.button`
     background-color: #FFD922;
     border-radius: 25px;
@@ -106,8 +101,6 @@ const [InputAge, setInputAge] = useState ('')
 const [InputWhy, setInputWhy] = useState ('')
 const [InputProfession, setInputProfession] = useState ('')
 const [InputCountry, setInputCountry] = useState ('')
-const [InputSelect, setInputSelect] = useState ('')
-const [viagens, setViagens] = useState([])
 const { id } = useParams()
 
 const handleInputName = (event) => {
@@ -130,9 +123,6 @@ const handleInputCountry = (event) => {
     setInputCountry(event.target.value)
 }
 
-const handleInputSelect = (event) => {
-    setInputSelect(event.target.value)
-}
 
 const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/maiara-santos-franklin/trips/'
     
@@ -164,6 +154,11 @@ const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/maia
         .post(`${linkDaApi}${id}/apply`, body)
         .then((response) => {
             alert('Sua inscrição foi realizada com sucesso!')
+            setInputName("")
+            setInputAge("")
+            setInputWhy("")
+            setInputProfession("")
+            setInputCountry("")
         })
         .catch((error) => {
             console.log(error.message)
@@ -185,9 +180,6 @@ const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/maia
                     <StyleInput onChange={handleInputWhy} value={InputWhy} placeholder="Nos fale porque você é um bom candidato"></StyleInput>
                     <StyleInput onChange={handleInputProfession} value={InputProfession} placeholder="Digite sua Profissão"></StyleInput>
                     <StyleInput onChange={handleInputCountry} value={InputCountry} placeholder="Digite seu País"></StyleInput>
-                    {/* <StyleParagraphInfos>Selecione a viagem que deseja:</StyleParagraphInfos>
-                    <StyleSelect onChange={handleInputSelect} value={InputSelect}>
-                        {listaDeViagens}</StyleSelect> */}
                 </StyleDivInputs>                
                 <StyleDivButtons>
                     <StyleButton onClick={aplicarParaViagem}>Aplicar</StyleButton>              

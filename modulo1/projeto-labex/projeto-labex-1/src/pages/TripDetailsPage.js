@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import swal from "sweetalert";
 
 
 const StyleSection = styled.section` 
@@ -51,13 +52,10 @@ const StyleInfos = styled.h3`
 const StyleContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    align-items: center;
     flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    height: auto;
-    background-color: #000;
+    gap: 20px;
+    justify-content: center;
+    margin: 10px;
     
 `
 
@@ -121,13 +119,12 @@ const {id} = useParams()
             setViagensDetalhe(response.data.trip)
             setCandidates(response.data.trip.candidates)
             setApproved(response.data.trip.approved)
-            alert('Deu certo')
             console.log('setViagensDetalhe:', response.data.trip)     
             console.log('setCandidates:', response.data.trip.candidates)
             console.log('setApproved:', response.data.trip.approved)                               
         })
         .catch((erro) => {
-            console.log('Deu errado')
+           
         })   
     }   
     
@@ -144,9 +141,9 @@ const {id} = useParams()
             .put(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maiara-santos-franklin/trips/${id}/candidates/${candidateId}/decide`, body, haveToken)
             .then((response) => {             
               if(approve){
-                alert("Aprovado")
+                swal("Aprovado")
               }else{
-                alert("Deu ruim")
+                swal("Deletado com Sucesso")
               }
               pegaDetalhes()
                 console.log ("Aprovados", response.data)
@@ -175,15 +172,15 @@ const {id} = useParams()
     
      const listaDeAprovados = approved.map((candidate) => {
         return(
-            <StyleContainer>                
-                <StyleDiv key={candidate.id}>
+                       
+        <StyleDiv key={candidate.id}>
             <StyleTitleCard>Nome: {candidate.name}</StyleTitleCard> 
             <StyleInfos>Idade: {candidate.age}</StyleInfos>
             <StyleInfos>País: {candidate.country}</StyleInfos>
             <StyleInfos>Profissão: {candidate.profession}</StyleInfos>
             <StyleInfos>{candidate.applicationText}</StyleInfos>
-                </StyleDiv> 
-            </StyleContainer>
+        </StyleDiv> 
+       
         )
      })
 
@@ -203,9 +200,9 @@ const {id} = useParams()
                 </StyleContainer>) : ('')}               
 
             <StyleSubtitle>Candidatos Pendentes</StyleSubtitle>
-            {listaDeCandidatos}            
+            <StyleContainer>{listaDeCandidatos}</StyleContainer>             
             <StyleSubtitle>Candidatos Aprovados</StyleSubtitle>
-            {listaDeAprovados}
+            <StyleContainer>{listaDeAprovados}</StyleContainer>
         </StyleSection>
     )
 }

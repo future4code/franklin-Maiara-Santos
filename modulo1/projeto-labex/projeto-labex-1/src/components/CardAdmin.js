@@ -1,7 +1,5 @@
 import React from "react";
 import styled from 'styled-components'
-import ButtonWhiteAdmin from "./ButtonWhiteAdmin";
-import ButtonYellow from "./ButtonYellow";
 import { useNavigate, useParams } from "react-router-dom";
 import swal from "sweetalert";
 import axios from "axios";

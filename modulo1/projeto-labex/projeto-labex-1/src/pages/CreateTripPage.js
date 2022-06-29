@@ -95,6 +95,7 @@ const CreateTripPage = () => {
     
     const handleInputNameTrip = (event) => {
         setInputNameTrip(event.target.value)
+        
     }
 
     const handleInputPlanet = (event) => {
@@ -137,11 +138,11 @@ const CreateTripPage = () => {
 
           .then((response) => {
             swal("Viagem Criada com sucesso!")
-            setInputNameTrip('')   
-            setInputPlanet('')
-            setInputDate('')
-            setInputDescription('')
-            setInputDurationTrip('')
+            setInputNameTrip("")   
+            setInputPlanet("")
+            setInputDate("")
+            setInputDescription("")
+            setInputDurationTrip("")
 
           })
           .catch((erro) => {

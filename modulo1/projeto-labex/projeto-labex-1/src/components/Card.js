@@ -1,6 +1,5 @@
 import React from "react";
 import styled from 'styled-components'
-import ButtonWhite from "./ButtonWhite";
 import { useNavigate } from 'react-router-dom';
 
 
