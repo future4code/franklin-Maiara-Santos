@@ -7,14 +7,14 @@ import { useNavigate } from "react-router-dom";
 import {SignUpFormContainer} from './styled'
 import { signUp } from "../../services/user";
 
-const SignUpForm = () => {
+const SignUpForm = ({setRightButtonText}) => {
     const navigate = useNavigate()
     const [form, onChange, clear] = useForm({ name: "", email: "", password: "" })
 
     const onSubmitForm = (event) => {
         console.log(form)
         event.preventDefault()
-        signUp(form, clear, navigate)
+        signUp(form, clear, navigate, setRightButtonText)
     }
 
     return (

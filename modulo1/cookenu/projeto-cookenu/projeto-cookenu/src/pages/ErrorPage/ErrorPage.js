@@ -1,10 +1,16 @@
 import React from 'react'
+import error from '../../assets/error.png'
+import { Typography } from '@mui/material';
+import {ErrorImage,ErrorPageContainer} from './styled'
 
 function ErrorPage () {
     return (
-        <div>
-            <h1>ErrorPage</h1>
-        </div>
+        <ErrorPageContainer>
+            <ErrorImage src={error}></ErrorImage>
+            <Typography color={'primary'} variant={'h4'} align={'center'}>
+                Erro 404 - Página Não Encontrada
+            </Typography>
+        </ErrorPageContainer>
     )
 
 };
