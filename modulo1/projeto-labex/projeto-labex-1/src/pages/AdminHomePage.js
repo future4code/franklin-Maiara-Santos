@@ -42,7 +42,7 @@ const StyleButton = styled.button`
     font-weight: 600;
     color: #371A46;
     border-radius: 1px solid #371A46;
-    margin-right: 40px;
+    margin-left: 900px;
     cursor: pointer;
 
 `
@@ -59,6 +59,20 @@ const StyleListTrips = styled.div`
     gap: 18px;
     align-items: center;
     justify-content: center;
+`
+
+const StyleButtonLogout = styled.button`
+    width: 180px;
+    height: 45px;
+    border-radius: 35px;
+    background-color: #FFD922;
+    font-size: 18px;
+    font-weight: 600;
+    color: #371A46;
+    border-radius: 1px solid #371A46;
+    margin-right: 40px;
+    cursor: pointer;
+
 `
 
  function AdminHomePage () {
@@ -97,12 +111,17 @@ const listaDeViagens = viagens.map ((viagem) => {
     navigate ('/')
     }
 
+    const Logout = () => {
+        const token = localStorage.removeItem('token')
+        navigate ('/login')
+    }
 
     return(
         <StyleSection>
             <StyleMenu>         
                 <StyleTitle onClick={GoToHome}>Labex</StyleTitle>
                 <StyleButton onClick={goToCreateTrip}>Criar uma nova viagem</StyleButton>
+                <StyleButtonLogout onClick={Logout}>Logout</StyleButtonLogout>
             </StyleMenu>
             <StyleSubtitle>Lista de viagens</StyleSubtitle>
             <StyleListTrips>

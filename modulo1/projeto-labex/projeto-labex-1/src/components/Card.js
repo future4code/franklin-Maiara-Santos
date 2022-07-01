@@ -5,13 +5,15 @@ import { useNavigate } from 'react-router-dom';
 
 const StyleDiv = styled.div`
     display: flex;
-    height: 430px;
+    height: auto;
+    min-height: 400px;
     width: 340px;
     border-radius: 55px;
     background-color: #fff;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-bottom: 20px;
 `
 
 const StyleDivButtonsElements = styled.div`

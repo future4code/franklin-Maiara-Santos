@@ -74,6 +74,7 @@ const StyleButtonYellowBig = styled.button`
 `
 
 function HomePage () {
+    const token = localStorage.getItem('token')
     const navigate = useNavigate()
 
     const GoToListTripPage = () =>{        
@@ -83,6 +84,10 @@ function HomePage () {
       const GoToLoginPage = () =>{        
         navigate ('/login')
       }
+
+    const GoToAdminHomePage = () => {
+        navigate ('/admin/trips/list')
+    }
 
     return(
         <StyleSection>
@@ -94,7 +99,7 @@ function HomePage () {
                 <StyleSubtitleInfos>Confira as opções e agende hoje mesmo</StyleSubtitleInfos>
                 <StyleDivButtons>
                     <StyleButtonWhiteBig onClick={GoToListTripPage}>Explorar</StyleButtonWhiteBig>
-                    <StyleButtonYellowBig onClick={GoToLoginPage}>Admin</StyleButtonYellowBig>
+                    <StyleButtonYellowBig onClick={token ? GoToAdminHomePage : GoToLoginPage }>Admin</StyleButtonYellowBig>
                 </StyleDivButtons>                
             </StyleDivInfos>
            </StyleDivElements>

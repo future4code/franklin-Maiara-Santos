@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import HeaderUser from "../components/HeaderUser";
 import Astronauta4 from '../imagens/astronauta-4.png';
 import axios from "axios";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import swal from "sweetalert";
 
 
 const StyleSection = styled.section`
@@ -54,11 +54,6 @@ const StyleDivButtons = styled.div`
     justify-content: center;
     margin-top: 30px;
 `
-const StyleParagraphInfos = styled.p`
-    color: #371A46;
-    font-size: 18px;
-    font-weight: 600;
-`
 
 const StyleDivInputs = styled.div`
     display: flex;
@@ -87,11 +82,6 @@ const StyleButton = styled.button`
     font-weight: 700;
     color: #371A46;
     cursor: pointer;
-`
-const StyleOption = styled.option`
-    font-weight: 500;
-    font-size: 16px;
-    color: #000;
 `
 
 const AplicationFormPage = () => {
@@ -126,20 +116,6 @@ const handleInputCountry = (event) => {
 
 const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/maiara-santos-franklin/trips/'
     
-    // const pegaViagens = () => {
-    //     axios.get (linkDaApi)
-    //     .then((response) => {
-    //         setViagens(response.data.trips)
-    //     })
-    //     .catch((error) => {            
-    //     })
-    // }    
-    
-    // // const listaDeViagens = viagens.map ((viagem) => {
-    // //     return <StyleOption key={viagem.id}>{viagem.name}</StyleOption>
-    // // })
-
-    // useEffect (pegaViagens, [])
 
     const aplicarParaViagem = (event) => {
         event.preventDefault();
@@ -153,7 +129,7 @@ const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/maia
         axios
         .post(`${linkDaApi}${id}/apply`, body)
         .then((response) => {
-            alert('Sua inscrição foi realizada com sucesso!')
+            swal('Sua inscrição foi realizada com sucesso!')
             setInputName("")
             setInputAge("")
             setInputWhy("")
@@ -162,7 +138,7 @@ const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/maia
         })
         .catch((error) => {
             console.log(error.message)
-            alert('Não foi possível fazer sua inscrição. Por favor, tente novamente')
+            swal('Não foi possível fazer sua inscrição. Por favor, tente novamente')
         })   
     };
     
