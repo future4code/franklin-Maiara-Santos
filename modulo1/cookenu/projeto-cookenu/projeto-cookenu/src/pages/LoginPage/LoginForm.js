@@ -45,7 +45,7 @@ const LoginForm = ({setRightButtonText}) => {
                     variant={"contained"}
                     margin={"normal"}
                 >
-                    Fazer Login!
+                    Fazer Login
                 </Button>
             </form>
         </InputContainer>

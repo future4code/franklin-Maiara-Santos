@@ -1,9 +1,9 @@
 import React from 'react'
-import useUnprotectedPage from '../../hooks/useUnprotectedPage';
+import useProtectedPage from '../../hooks/useProtectPage';
 
 function AddRecipesPage () {
 
-    useUnprotectedPage()
+    useProtectedPage()
     
     return (
         <div>

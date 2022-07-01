@@ -7,7 +7,6 @@ export const login = (body, clear, navigate, setRightButtonText) => {
     .then((response) =>{
         localStorage.setItem("token", response.data.token)
         clear()
-        alert("Deu certo")
         goToRecipesList(navigate)
         setRightButtonText("Logout")
 
@@ -22,7 +21,6 @@ export const signUp = (body, clear, navigate, setRightButtonText) => {
     .then((response) =>{
         localStorage.setItem("token", response.data.token)
         clear()
-        alert("Deu certo")
         goToRecipesList(navigate)
         setRightButtonText("Logout")
     })
