@@ -74,7 +74,7 @@ function CardAdmin (props) {
         }
 
         const pegaViagens = () => {
-            const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trips'
+            const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/maiara-santos-franklin/trips'
             axios.get (linkDaApi)
             .then((response) => {
                 setViagens(response.data.trips)
@@ -86,7 +86,7 @@ function CardAdmin (props) {
         useEffect (pegaViagens, [])
         
     const deletarViagem = async (id) => {
-    const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trips'
+    const linkDaApi = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/maiara-santos-franklin/trips'
     const token = localStorage.getItem('token')
         
     axios.delete(`${linkDaApi}/${id}`, {
