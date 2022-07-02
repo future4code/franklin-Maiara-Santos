@@ -5,7 +5,7 @@ import useRequestData from "../../hooks/useRequestData"
 import { BASE_URL } from "../../constants/urls"
 import { RecipeListContainer, AddRecipeButton } from "./styled"
 import { Add } from "@mui/icons-material"
-import { goToAddRecipes } from "../../routes/coordinator"
+import { goToAddRecipes, goToRecipesDetail } from "../../routes/coordinator"
 import { useNavigate } from "react-router-dom"
 
 const RecipesListPage = () => {
@@ -14,8 +14,8 @@ const RecipesListPage = () => {
     const recipes = useRequestData([], `${BASE_URL}/recipe/feed`)
     console.log(recipes);
 
-    const onClickCard = () => {
-
+    const onClickCard = (id) => {
+        goToRecipesDetail(navigate, id)
     }
 
     const recipeCards = recipes.map((recipe) => {
@@ -24,7 +24,7 @@ const RecipesListPage = () => {
                 key={recipe.recipe_id}
                 title={recipe.title}
                 image={recipe.image}
-                onClick={onClickCard}
+                onClick={()=> onClickCard(recipe.recipe_id)}
             />
         )
     })
