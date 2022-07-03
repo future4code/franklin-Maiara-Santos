@@ -6,15 +6,19 @@ import useForm from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
 import {SignUpFormContainer} from './styled'
 import { signUp } from "../../services/user";
+import CircularProgress from '@mui/material/CircularProgress'
+import { useState } from "react";
+
 
 const SignUpForm = ({setRightButtonText}) => {
     const navigate = useNavigate()
     const [form, onChange, clear] = useForm({ name: "", email: "", password: "" })
+    const [isLoading, setIsLoading] = useState(false)
 
     const onSubmitForm = (event) => {
         console.log(form)
         event.preventDefault()
-        signUp(form, clear, navigate, setRightButtonText)
+        signUp(form, clear, navigate, setRightButtonText, setIsLoading)
     }
 
     return (
@@ -62,7 +66,7 @@ const SignUpForm = ({setRightButtonText}) => {
                     variant={"contained"}
                     margin={"normal"}
                 >
-                    Fazer Cadastro
+                    {isLoading ? <CircularProgress color={"inherit"} size={24} ></CircularProgress> : <>Fazer Cadastro</>}
                 </Button>
             </form>
         </InputContainer>
