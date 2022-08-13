@@ -77,11 +77,11 @@ app.get('/get-account',(request: Request, response: Response)=> {
   app.get("/balance/:cpf", (request: Request, response: Response) => {
     const cpf = request.params.cpf;
   
-    const [clientFilter] = arrayUsers.filter((client: any) => {
+    const [clientFilter] = arrayUsers.filter((client) => {
       return client.cpf === Number(cpf);
     });
   
-    const balance = "R$ " + clientFilter.balance;
+    const balance = clientFilter.balance;
   
     response.send(balance);
   });
