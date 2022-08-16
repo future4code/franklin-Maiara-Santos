@@ -1,30 +1,30 @@
 # EXERCÍCIO 1
 
 ### A.
-CREATE TABLE: Cria uma tabela
-VARCHAR: Declara uma variável string que terá no máx 255 caracteres
-FLOAT: Declara uma variável com número não inteiro
-DATE: Declara data
-PRIMARY KEY: Chave primária da tabela
+* CREATE TABLE: Cria uma tabela
+* VARCHAR: Declara uma variável string que terá no máx 255 caracteres
+* FLOAT: Declara uma variável com número não inteiro
+* DATE: Declara data
+* PRIMARY KEY: Chave primária da tabela
 
 ### B.
-SHOW DATABASES: Mostra a quantidade de bancos de dados presente no seu sistema
+* SHOW DATABASES: Mostra a quantidade de bancos de dados presente no seu sistema
 
-SHOW TABLES> Mostra as tabelas do banco de dados atual
+* SHOW TABLES> Mostra as tabelas do banco de dados atual
 
-DESCRIBE Actor: Mostra todos os atributos que tem a tabela Actor (ou seja as labels, e não os valores que ela tem)
+* DESCRIBE Actor: Mostra todos os atributos que tem a tabela Actor (ou seja as labels, e não os valores que ela tem)
 
 # EXERCÍCIO 2
 
 ### A.
-INSERT INTO Actor (id, name, salary, birth_date, gender)
+``INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "002", 
   "Gloria Pires",
   12000000,
   "1963-08-23", 
   "female"
-);
+);`
 
 ### B.
 Não é possível adicionar dados com o mesmo id, uma vez que, para cada linha de dados, o id é único.
