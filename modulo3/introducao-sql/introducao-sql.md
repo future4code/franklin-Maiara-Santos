@@ -32,6 +32,7 @@ VALUES(
 Não é possível adicionar dados com o mesmo id, uma vez que, para cada linha de dados, o id é único.
 
 A -------------------------------------
+~~~sql
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "003", 
@@ -40,8 +41,10 @@ VALUES(
   "1929-10-19", 
   "female"
 );
+~~~~
 
 B ---------------------------------------
+~~~sql
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "004",
@@ -50,8 +53,10 @@ VALUES(
   "1949-04-18", 
   "male"
 );
+~~~
 
 C ----------------------------------------
+~~~sql
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "005", 
@@ -60,7 +65,9 @@ VALUES(
   "1929-10-19", 
   "female"
 );
+~~~
 D ----------------------------------------
+~~~sql
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "006",
@@ -69,7 +76,9 @@ VALUES(
   "1949-04-18", 
   "male"
 );
+~~~
 E ----------------------------------------
+~~~sql
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "007", 
@@ -78,6 +87,7 @@ VALUES(
   "1979-03-26", 
   "female"
 );
+~~~
 
 # EXERCICIO 3 
 
@@ -116,6 +126,7 @@ SELECT * FROM Actor WHERE name LIKE "%g%" OR name LIKE "%G%" OR name LIKE "%A%" 
 
 # EXERCICIO 5
 A ----------------------------------------
+~~~sql
 CREATE TABLE Filmes (
     id VARCHAR(255) PRIMARY KEY,
     titulo VARCHAR (255) NOT NULL,
@@ -123,8 +134,10 @@ CREATE TABLE Filmes (
     data_de_lancamento DATE NOT NULL,
     avaliacao INT NOT NULL
 );
+~~~
 
 B,C,D,E -----------------------------------
+~~~sql
 INSERT INTO Filmes (id, titulo, sinopse, data_de_lancamento, avaliacao)
 VALUES(
   "001", 
@@ -158,8 +171,10 @@ no Brasil capaz de substituí-lo. O borracheiro e pescador Taoca e a solitária 
 "2003-01-31",
 9
 );
+~~~
 
 # EXERCICIO 6
+~~~sql
 A ---------------------------------------
 SELECT id, avaliacao, titulo FROM Filmes WHERE id="003";
 
@@ -168,9 +183,10 @@ SELECT * FROM Filmes WHERE titulo="Deus é Brasileiro";
 
 C -----------------------------------------
 SELECT id, titulo, sinopse FROM Filmes WHERE avaliacao >=7;
+~~~
 
 # EXERCICIO 7
-
+~~~sql
 A ---------------------------------------
 SELECT * FROM Filmes WHERE titulo LIKE "%vida%";
 
@@ -187,3 +203,4 @@ SELECT * FROM Filmes
 WHERE data_de_lancamento < "2022-08-16"
 AND (nome LIKE "%resolve%" OR  sinopse LIKE "%resolve%")
 AND avaliacao > 7;
+~~~
