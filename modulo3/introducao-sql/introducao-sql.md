@@ -17,14 +17,14 @@
 # EXERCÍCIO 2
 
 ### A.
-``INSERT INTO Actor (id, name, salary, birth_date, gender)
+```INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "002", 
   "Gloria Pires",
   12000000,
   "1963-08-23", 
   "female"
-);`
+);```
 
 ### B.
 Não é possível adicionar dados com o mesmo id, uma vez que, para cada linha de dados, o id é único.
