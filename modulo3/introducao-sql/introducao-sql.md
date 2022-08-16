@@ -90,7 +90,7 @@ VALUES(
 ~~~
 
 # EXERCICIO 3 
-
+~~~sql
 A --------------------------------------
 SELECT id, name, salary, birth_date FROM Actor WHERE gender = "female"
 
@@ -107,9 +107,10 @@ SELECT id, name, salary FROM Actor WHERE salary < 500000;
 
 E ----------------------------------------
 SELECT id, name from Actor WHERE id = "002";
+~~~
 
 # EXERCICIO 4
-
+~~~sql
 A ----------------------------------------
 A Query auxilia a encontrar atores que começam com a letra A ou J e que tenham salários maiores que 300 mil
 
@@ -122,7 +123,7 @@ WHERE name LIKE "%g%" OR name LIKE "%G%";
 
 D -----------------------------------------
 SELECT * FROM Actor WHERE name LIKE "%g%" OR name LIKE "%G%" OR name LIKE "%A%" OR name LIKE "%a%" AND salary >= 350000 AND salary < 900000;
-
+~~~
 
 # EXERCICIO 5
 A ----------------------------------------
