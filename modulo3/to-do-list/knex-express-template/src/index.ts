@@ -41,6 +41,20 @@ const arrayUsers: User[] = [
    }
 ]
 
+type Task = {
+   title: string,
+   description: string,
+   limitDate: string,
+   creatorUserId: string
+}
+
+const arrayTaks: Task[] = [{
+   title: "Criar banco dos alunos",
+   description: "Devemos criar o banco dos alunos para o módulo do backend",
+   limitDate: "04/05/2020",
+   creatorUserId: '001'
+}]
+
 // URL DA HOME DA API
 
 app.get("/", ( request:Request, response:Response ) => {
@@ -79,20 +93,6 @@ app.get("/user/:id", (request: Request, response: Response) => {
 // Editar Usuário
 
 app.put('/user/edit/:id', (request: Request, response: Response) => {
-    
-   const IdUser: number = Number(request.params.id)
-   const name = request.body
-   const nickname = request.body
-
-   const newUserEdit: Array<User> = arrayUsers.filter((userFilter) => {
-       if (userFilter.id === IdUser && userFilter.name === name && userFilter.nickname === nickname) {
-         return userFilter 
-       }
-   })
-   response.status(200).send(newUserEdit)
-})
-
-app.put('/user/edit/:id', (request: Request, response: Response) => {
 
 try{
    const IdUser: number = Number(request.params.id)
@@ -113,6 +113,35 @@ try{
    response.status(400).send("Algo deu errado. Tente novamente")
 }
 })
+
+// Criar Task
+
+app.post("/task", (request: Request, response: Response) => {
+
+    const {title, description, limitDate, creatorUserId}: Task = request.body
+  
+    const newTask = {title, description, limitDate, creatorUserId}
+  
+    arrayTaks.push(newTask)
+
+    response.send("Você criou uma tarefa com sucesso")
+   
+ })
+
+ // Pegar task pelo ID
+
+ app.get("/task/:id", (request: Request, response: Response) => {
+ 
+   const taskId = request.params.id;
+ 
+   const getTaskIdFilter: Array<Task> = arrayTaks.filter((taskFilter) => {
+      if (taskFilter.creatorUserId === taskId) {
+        return taskFilter
+      }
+  })
+  response.status(200).send(getTaskIdFilter)
+
+});
 
 
 const server = app.listen(process.env.PORT || 3003, () => {
