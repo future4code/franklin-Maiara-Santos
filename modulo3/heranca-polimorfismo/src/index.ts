@@ -46,7 +46,7 @@ export class User {
 // Exercício 2
 
 // A. Apenas uma vez
-// B. Apenas uma vez, pois a classe Customer é filha da classe User, assim ao contrui-la, o pai é chamado também e por isso ele aparece
+// B. Apenas uma vez, pois como a classe Customer é filha da classe User, o pai é chamado também e por isso ele aparece
 
 
 // Exercício 3
