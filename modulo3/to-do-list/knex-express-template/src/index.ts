@@ -57,7 +57,7 @@ const arrayTaks: Task[] = [{
 
 // URL DA HOME DA API
 
-app.get("/", ( request:Request, response:Response ) => {
+app.get("/", (request:Request, response:Response ) => {
    response.status(200).send('Seja bem vindo a API To Do List')
 })
 
@@ -66,13 +66,17 @@ app.get("/", ( request:Request, response:Response ) => {
 app.post("/user", async (request: Request, response: Response)=>{
     try{ 
       const newUser: User = request.body
-      if (request.body.name && request.body.nickname && request.body.email){
+      if (request.body.name && request.body.nickname && request.body.email && request.body.id){
           arrayUsers.push (newUser)
           response.status(200).send('Usuário criado com sucesso')
       }
-    }catch(error){
+   
+      else {
+         response.status(400).send("É necessário preencher todos os campos")
+   }}
+      catch(error){
        //deu tudo errado
-       response.status(400).send("Algo deu errado. Tente novamente");
+         response.status(400).send("Algo deu errado. Tente novamente");
     }
     
  });
@@ -96,19 +100,17 @@ app.put('/user/edit/:id', (request: Request, response: Response) => {
 
 try{
    const IdUser: number = Number(request.params.id)
-   const name = request.body
-   const nickname = request.body
+   const {name, nickname}: User = request.body
 
    const newUserEdit: Array<User> = arrayUsers.filter((userFilter) => {
-       if (userFilter.id === IdUser && userFilter.name === name && userFilter.nickname === nickname) {
-         return userFilter 
+       if (userFilter.id === IdUser) {
+         userFilter.name = name 
+         userFilter.nickname = nickname
+         return userFilter
        }
    })
    response.status(200).send(newUserEdit)
 
-   if(!request.body.name && !request.body.nickname && !request.body.email){
-       response.status(400).send("Preencha os valores a serem alterados")
-   }
 }catch(error){
    response.status(400).send("Algo deu errado. Tente novamente")
 }
@@ -118,14 +120,21 @@ try{
 
 app.post("/task", (request: Request, response: Response) => {
 
+   try {
     const {title, description, limitDate, creatorUserId}: Task = request.body
-  
     const newTask = {title, description, limitDate, creatorUserId}
-  
-    arrayTaks.push(newTask)
+      if(request.body.title && request.body.description && request.body.limitDate && request.body.creatorUserId ) {
+         arrayTaks.push(newTask)
+         response.status(200).send("Você criou uma tarefa com sucesso")
+      }
 
-    response.send("Você criou uma tarefa com sucesso")
-   
+      else {
+         response.status(400).send("É necessário preencher todos os campos")
+   }}
+         catch(error){
+      response.status(400).send("Algo deu errado. Tente novamente")
+   }
+    
  })
 
  // Pegar task pelo ID
