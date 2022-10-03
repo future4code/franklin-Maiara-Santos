@@ -8,7 +8,7 @@ export default async function DeleteProduct (request:Request, response:Response)
        await connection('Produtos')
     .where({id : id})
     .delete()
-       return response.status(200).json("Editado com Sucesso")
+       return response.status(200).json("Deletado com Sucesso")
     } catch (error: any) {
         response.status(400).send({message: error.message}) 
     }
