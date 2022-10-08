@@ -4,6 +4,7 @@ import Header from "../components/Header/Header";
 import { BASE_URL, TMDB_API_KEY  } from '../constants/urls';
 import { useState, useEffect } from "react";
 import MovieCard from "../components/MovieCard/MovieCard";
+import { ContainerMovies } from "./StyleHome";
 
 function Home () {
 
@@ -30,10 +31,10 @@ function Home () {
             <Header></Header>
             <BannerHome></BannerHome>
             <h2>Melhores Filmes</h2>
-            <div>
+            <ContainerMovies>
                 {topMovies.length === 0 && <p>Carregando...</p>}
                 {topMovies.length > 0 && topMovies.map((movie) => <MovieCard key={movie.id} movie={movie}></MovieCard>)}
-            </div>
+            </ContainerMovies>
         </div>
     )
 }

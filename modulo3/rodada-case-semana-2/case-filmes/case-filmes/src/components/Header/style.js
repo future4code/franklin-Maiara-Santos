@@ -19,6 +19,19 @@ export const StyleInput = styled.input`
   border-radius: 5px;
   font-size: 16px;
   height: 20px;
-  margin-right: 50px;
   text-align: center;
+`
+
+export const ContainerSeach = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 30px;
+
+`
+
+export const StyleImgSeach = styled.img`
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
 `

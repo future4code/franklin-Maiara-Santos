@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from '../../assets/logo.png'
 import { useAppNavigate } from '../../hooks/useAppNavigate'
-import { ContainerHeader, StyleImage, StyleInput } from "./style";
+import { ContainerHeader, StyleImage, StyleInput, ContainerSeach, StyleImgSeach } from "./style";
+import search from '../../assets/search.png'
 
 function Header () {
 
@@ -11,7 +12,10 @@ function Header () {
     return(
         <ContainerHeader>
             <Link to={GoToHome}><StyleImage src={logo} alt="logo"/></Link>
-            <StyleInput type='text' placeholder="Pesquise um filme"></StyleInput>
+            <ContainerSeach>
+                <StyleInput type='text' placeholder="Pesquise um filme"></StyleInput>
+                <StyleImgSeach src={search}/>
+            </ContainerSeach>
         </ContainerHeader>
     )
 } 
