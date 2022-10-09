@@ -35,3 +35,11 @@ export const StyleImgSeach = styled.img`
   height: 25px;
   border-radius: 5px;
 `
+
+export const ContainerForm = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 30px;
+
+`
