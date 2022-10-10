@@ -11,8 +11,6 @@ const Header = () => {
     const [search, setSearch] = useState("");
     const navigate = useNavigate();
 
-    const { GoToHome } = useAppNavigate()
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,7 +23,7 @@ const Header = () => {
 
     return(
         <ContainerHeader id="navbar">
-            <Link to={GoToHome}><StyleImage src={logo} alt="logo"/></Link>
+            <Link to="/"><StyleImage src={logo} alt="logo"/></Link>
             <ContainerSeach>
                 <ContainerForm onSubmit={handleSubmit}>
                     <StyleInput 
