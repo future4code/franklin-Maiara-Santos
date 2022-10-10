@@ -18,7 +18,7 @@ function Home () {
 
     useEffect(() => {
 
-        const topMoviesURL = `${BASE_URL}top_rated?${TMDB_API_KEY}`;
+        const topMoviesURL = `${BASE_URL}popular?${TMDB_API_KEY}`;
 
         console.log(topMoviesURL)
 

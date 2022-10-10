@@ -1,28 +1,42 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from '../../assets/logo.png'
 import { useAppNavigate } from '../../hooks/useAppNavigate'
 import { ContainerHeader, StyleImage, StyleInput, ContainerSeach, StyleImgSeach, ContainerForm } from "./style";
-import search from '../../assets/search.png'
+import lupa from '../../assets/lupa.png'
 import { useState } from "react";
 
-function Header () {
+const Header = () => {
 
-    const [searchField, setSearch] = useState('')
+    const [search, setSearch] = useState("");
+    const navigate = useNavigate();
 
-    const { GoToMovieDetails, GoToHome } = useAppNavigate()
+    const { GoToHome } = useAppNavigate()
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        if (!search) return;
+    
+        navigate(`/search?q=${search}`, { replace: true });
+        setSearch("");
+      };
 
     return(
-        <ContainerHeader>
+        <ContainerHeader id="navbar">
             <Link to={GoToHome}><StyleImage src={logo} alt="logo"/></Link>
             <ContainerSeach>
                 <ContainerForm onSubmit={handleSubmit}>
-                    <StyleInput type='text' placeholder="Pesquise um filme"></StyleInput>
-                    <StyleImgSeach src={search}/>
+                    <StyleInput 
+                    type="text" 
+                    placeholder="Pesquise um filme" 
+                    onChange={(e) => setSearch(e.target.value)}
+                    value={search}>
+                    </StyleInput>
+                    <button type="submit">
+                    <StyleImgSeach src={lupa}/>
+                    </button>
                 </ContainerForm>
             </ContainerSeach>
         </ContainerHeader>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { PurpleLight } from "../../constants/colors";
 
-export const ContainerHeader = styled.div`
+export const ContainerHeader = styled.nav`
   background-color: ${PurpleLight};
   width: 100%;
   height: 56px;
@@ -36,7 +36,7 @@ export const StyleImgSeach = styled.img`
   border-radius: 5px;
 `
 
-export const ContainerForm = styled.div`
+export const ContainerForm = styled.form`
   display: flex;
   align-items: center;
   gap: 6px;
