@@ -7,7 +7,7 @@ export const ContainerCard = styled.div`
    align-items: center;
    text-align: center;
    width: 20%;
-   margin: 10px;
+   margin: 15px;
    
 `
 
@@ -17,6 +17,7 @@ export const StyleTitleMovie = styled.h2`
     font-weight: 700;
     letter-spacing: 0em;
     text-align: left;
+    margin-top: 5px;
 
 `
 
@@ -26,6 +27,8 @@ export const StyleVote = styled.p`
     font-weight: 700;
     letter-spacing: 0em;
     text-align: left;
+    margin-bottom: 10px;
+    margin-top: -10px
 `
 
 export const StyleImgMovie = styled.img`

@@ -37,3 +37,23 @@ export const CharacterName = styled.p`
   font-size: 1rem;
   font-weight: 400;
 `
+
+export const ContainerMovieDetails = styled.div`
+  width: 100%;
+  height: 800px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: #fedfef;
+`
+
+export const StyleSinopse = styled.p`
+    width: 70%;
+    height: 100px;  
+`
+
+export const DetailsTextMovie = styled.div`
+    background-color: #dedede;
+    width: 40%;
+`
+
