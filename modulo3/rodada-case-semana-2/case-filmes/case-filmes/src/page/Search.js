@@ -22,7 +22,7 @@ const getSearchedMovies = async (url) => {
 
 useEffect(() => {
 
-    const searchWithQuery = `${BASE_SEARCH}?${TMDB_API_KEY}&query=${query}`;
+    const searchWithQuery = `${BASE_SEARCH}?${TMDB_API_KEY}&query=${query}&language=pt-BR`;
     getSearchedMovies(searchWithQuery);
   }, [query]);
 
@@ -34,7 +34,7 @@ useEffect(() => {
                 <ContainerBodyHome>
                      <ContainerMovies>
                         {movies.length === 0 && <p>Carregando...</p>}
-                        {movies.length > 0 && movies.map((movie) => <MovieCard key={movie.id} movie={movie}></MovieCard>)}
+                        {movies.length > 0 && movies.map((movie) => <MovieCard key={movie.id} movie={movie} noColorTitleWhite={true}></MovieCard>)}
                      </ContainerMovies>
                 </ContainerBodyHome>
         </div>

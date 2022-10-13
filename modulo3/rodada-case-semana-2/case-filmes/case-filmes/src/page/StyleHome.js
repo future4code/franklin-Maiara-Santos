@@ -34,7 +34,7 @@ export const ContainerBodyHome = styled.div`
 
 export const StyleTitlePage = styled.h2`
     font-family: Roboto;
-    font-size: 42px;
+    font-size: 36px;
     font-weight: 700;
     letter-spacing: 0em;
     text-align: center;

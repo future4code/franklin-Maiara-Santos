@@ -16,12 +16,25 @@ export const StyleTitleMovie = styled.h2`
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 0em;
-    text-align: left;
-    margin-top: 5px;
+    text-align: center;
+    margin-top: 8px;
 
 `
 
-export const StyleVote = styled.p`
+export const StyleTitleMovieWhite = styled.h2`
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0em;
+    text-align: lcenter;
+    margin-top: 5px;
+    color: #fff;
+    margin-top: 8px;
+   
+
+`
+
+export const StyleVote = styled.h4`
     font-family: Roboto;
     font-size: 20px;
     font-weight: 700;
@@ -29,6 +42,18 @@ export const StyleVote = styled.p`
     text-align: left;
     margin-bottom: 10px;
     margin-top: -10px
+    color: #000;
+`
+
+export const StyleVoteWhite = styled.p`
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: -10px
+    color: #fff;
 `
 
 export const StyleImgMovie = styled.img`

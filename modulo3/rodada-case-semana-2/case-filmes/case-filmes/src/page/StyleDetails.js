@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { PurpleDark } from "../constants/colors";
 
 export const CastTitle = styled.h1`
   font-size: 1.75rem;
@@ -40,11 +41,11 @@ export const CharacterName = styled.p`
 
 export const ContainerMovieDetails = styled.div`
   width: 100%;
-  height: 800px;
+  height: 750px;
   align-items: center;
   display: flex;
   justify-content: center;
-  background-color: #fedfef;
+  background-color: ${PurpleDark};
 `
 
 export const StyleSinopse = styled.p`
@@ -53,7 +54,26 @@ export const StyleSinopse = styled.p`
 `
 
 export const DetailsTextMovie = styled.div`
-    background-color: #dedede;
     width: 40%;
+    margin-top: -65px;
+    
 `
 
+
+export const StyleTitlePage = styled.h2`
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 12px;
+
+`
+
+export const ContainerTrailer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+`

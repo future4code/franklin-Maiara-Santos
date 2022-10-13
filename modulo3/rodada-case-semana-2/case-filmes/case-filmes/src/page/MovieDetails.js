@@ -5,7 +5,10 @@ import { TMDB_API_KEY, BASE_YT_URL, BASE_IMAGE_URL } from "../constants/urls";
 import { useParams } from "react-router-dom";
 import { BiMoney, BiMoviePlay, BiPlayCircle, BiMessageDetail, BiError } from "react-icons/bi";
 import ReactPlayer from 'react-player/youtube'
-import {CastContainer, CastCard, CastName, CharacterName, ContainerMovieDetails, StyleSinopse, DetailsTextMovie} from "./StyleDetails"
+import {ContainerTrailer, StyleTitlePage, CastContainer, CastCard, CastName, CharacterName, ContainerMovieDetails, StyleSinopse, DetailsTextMovie} from "./StyleDetails"
+import Header from "../components/Header/Header";
+import { Link } from "react-router-dom";
+import { IMG_API } from "../constants/urls";
 
 
 const MovieDetails = () => {
@@ -14,6 +17,7 @@ const MovieDetails = () => {
     const [movie, setMovie] = useState(null);
     const [trailer, setTrailer] = useState('');
     const [cast, setCast] = useState('');
+    const [recommendations, setRecommendations] = useState('');
   
     const getMovie = async (url) => {
       const res = await fetch(url);
@@ -38,6 +42,15 @@ const MovieDetails = () => {
     
       };
 
+      const getRecommendations = async (url) => {
+        const res = await fetch(url);
+        const data = await res.json();
+  
+        setRecommendations(data.results);
+        console.log(data)
+    
+      };
+
     const formatCurrency = (number) => {
         return number.toLocaleString("en-US", {
           style: "currency",
@@ -45,8 +58,15 @@ const MovieDetails = () => {
         });
       };
 
+      function refreshPage() {
+        setTimeout(()=>{
+            window.location.reload(true);
+        }, 500);
+        console.log('page to reload')
+    }
+
     useEffect(() => {
-        const movieURL = `${BASE_URL}${id}?${TMDB_API_KEY}`
+        const movieURL = `${BASE_URL}${id}?${TMDB_API_KEY}&language=pt-BR`
         getMovie(movieURL);
     }, []);
 
@@ -58,31 +78,39 @@ const MovieDetails = () => {
     useEffect(() => {
         const castURL = `${BASE_URL}${id}/credits?${TMDB_API_KEY}`
         getCast(castURL);
-        console.log(castURL)
+
     }, []);
+
+    useEffect(() => {
+      const recommendationsURL = `${BASE_URL}${id}/recommendations?${TMDB_API_KEY}&language=pt-BR`
+      getRecommendations(recommendationsURL);
+    
+  }, []);
+
 
     return(
       <div>
+        <Header></Header>
           {movie && (
         <ContainerMovieDetails>
            
-              <MovieCard movie={movie} showLink={false} />
+            <MovieCard movie={movie} showLink={false} noColorTitleWhite={false} />
       
             <DetailsTextMovie>
-            <p className="tagline">{movie.tagline}</p>
-              <div className="info">
+            <p>{movie.tagline}</p>
+              <div >
                 <h3><BiMoney /> Orçamento:</h3>
                 <p>{formatCurrency(movie.budget)}</p>
               </div>
-              <div className="info">
+              <div >
                 <h3><BiMoviePlay /> Receita:</h3>
                 <p>{formatCurrency(movie.revenue)}</p>
               </div>
-              <div className="info">
+              <div >
                 <h3><BiPlayCircle /> Duração:</h3>
                 <p>{movie.runtime} minutos</p>
               </div>
-              <div className="info description">
+              <div >
                 <h3><BiMessageDetail /> Sinopse:</h3>
                 <StyleSinopse>{movie.overview}</StyleSinopse>
               </div>
@@ -90,7 +118,7 @@ const MovieDetails = () => {
         </ContainerMovieDetails>
       )}
         <div>
-            <h3>Elenco</h3>
+            <StyleTitlePage>Elenco</StyleTitlePage>
             <CastContainer>
           {cast && cast.map(cast => (
             <CastCard key={cast.id}>
@@ -108,9 +136,9 @@ const MovieDetails = () => {
           ))}
         </CastContainer>
         </div>
-        <h3>Trailer</h3>
-        <div>
-            {trailer && trailer.results.length ? (
+        <StyleTitlePage>Trailer</StyleTitlePage>
+        <ContainerTrailer>
+        { trailer && trailer.results.length ? (
             <ReactPlayer
               width="50%"
               height="500px"
@@ -121,9 +149,32 @@ const MovieDetails = () => {
             <>
             <BiError/>
             </>
-          )}</div>
+          )}</ContainerTrailer>
+        <StyleTitlePage>Recomendações</StyleTitlePage>
+        <div>
+          {recommendations && recommendations.map(movie => (
+            <Link
+              style={{ textDecoration: 'none' }}
+              onClick={() => refreshPage()}
+              key={movie.id}
+              to={`/movie/${movie.id}`}
+            >
+              <div>
+                <CastCard key={movie.id}>
+                <img
+                  src={`${BASE_URL}${movie.id}/images?${movie.post_path}`}
+                  alt={movie.title}
+              />
+              <CastName>{movie.title}</CastName>
+              </CastCard>
+              </div>
+            </Link>
+          ))}
+        </div>
+        
       </div>
     )
 };
 
 export default MovieDetails;
+

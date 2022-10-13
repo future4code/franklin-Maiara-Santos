@@ -18,7 +18,7 @@ function Home () {
 
     useEffect(() => {
 
-        const topMoviesURL = `${BASE_URL}popular?${TMDB_API_KEY}`;
+        const topMoviesURL = `${BASE_URL}popular?${TMDB_API_KEY}&language=pt-BR`;
 
         console.log(topMoviesURL)
 
@@ -30,11 +30,11 @@ function Home () {
     <div>
         <Header></Header>
         <BannerHome></BannerHome>
-        <StyleTitlePage >Melhores Filmes</StyleTitlePage>
+        <StyleTitlePage >Filmes Populares</StyleTitlePage>
         <ContainerBodyHome>
             <ContainerMovies>
                 {topMovies.length === 0 && <p>Carregando...</p>}
-                {topMovies.length > 0 && topMovies.map((movie) => <MovieCard key={movie.id} movie={movie}></MovieCard>)}
+                {topMovies.length > 0 && topMovies.map((movie) => <MovieCard key={movie.id} movie={movie} noColorTitleWhite={true} ></MovieCard>)}
             </ContainerMovies>
         </ContainerBodyHome>
     </div>
