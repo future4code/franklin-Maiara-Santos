@@ -5,7 +5,7 @@ import { TMDB_API_KEY, BASE_YT_URL, BASE_IMAGE_URL } from "../constants/urls";
 import { useParams } from "react-router-dom";
 import { BiMoney, BiMoviePlay, BiPlayCircle, BiMessageDetail, BiError } from "react-icons/bi";
 import ReactPlayer from 'react-player/youtube'
-import {ContainerTrailer, StyleTitlePage, CastContainer, CastCard, CastName, CharacterName, ContainerMovieDetails, StyleSinopse, DetailsTextMovie} from "./StyleDetails"
+import {ContainerRecomendacoes, StyleImageRecommendations, ContainerTrailer, StyleTitlePage, CastContainer, CastCard, CastName, CharacterName, ContainerMovieDetails, StyleSinopse, DetailsTextMovie} from "./StyleDetails"
 import Header from "../components/Header/Header";
 import { Link } from "react-router-dom";
 import { IMG_API } from "../constants/urls";
@@ -151,26 +151,26 @@ const MovieDetails = () => {
             </>
           )}</ContainerTrailer>
         <StyleTitlePage>Recomendações</StyleTitlePage>
-        <div>
-          {recommendations && recommendations.map(movie => (
+        <ContainerRecomendacoes>
+          {recommendations && recommendations.map(recommendations => (
             <Link
               style={{ textDecoration: 'none' }}
               onClick={() => refreshPage()}
-              key={movie.id}
-              to={`/movie/${movie.id}`}
+              key={recommendations.id}
+              to={`/movie/${recommendations.id}`}
             >
               <div>
-                <CastCard key={movie.id}>
-                <img
-                  src={`${BASE_URL}${movie.id}/images?${movie.post_path}`}
-                  alt={movie.title}
+                <CastCard key={recommendations.id}>
+                <StyleImageRecommendations
+                  src={`https://image.tmdb.org/t/p/w300${recommendations.poster_path}`}
+                  alt={recommendations.title}
               />
-              <CastName>{movie.title}</CastName>
-              </CastCard>
+                <CastName>{recommendations.title}</CastName>
+                </CastCard>
               </div>
             </Link>
           ))}
-        </div>
+        </ContainerRecomendacoes>
         
       </div>
     )

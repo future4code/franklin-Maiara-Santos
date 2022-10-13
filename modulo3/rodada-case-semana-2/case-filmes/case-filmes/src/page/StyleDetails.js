@@ -14,6 +14,7 @@ export const CastContainer = styled.div`
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
+  
 `
 export const CastCard = styled.div`
   margin-bottom: 1rem;
@@ -25,6 +26,8 @@ export const CastCard = styled.div`
   img {
     width: 10.938rem;
   }
+  max-height: 360px;
+  min-height: 360px;
 `
 export const CastName = styled.h1`
   margin-top: 1rem;
@@ -76,4 +79,20 @@ export const ContainerTrailer = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 50px;
+`
+
+export const StyleImageRecommendations = styled.img`
+  display: flex;
+  width: 100%
+  height: 100px;
+`
+
+export const ContainerRecomendacoes = styled.div`
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  margin-bottom: 100px;
+
 `
