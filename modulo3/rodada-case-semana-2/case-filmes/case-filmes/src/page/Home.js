@@ -4,11 +4,21 @@ import Header from "../components/Header/Header";
 import { BASE_URL, TMDB_API_KEY  } from '../constants/urls';
 import { useState, useEffect } from "react";
 import MovieCard from "../components/MovieCard/MovieCard";
-import { ContainerMovies, ContainerBodyHome, StyleTitlePage } from "./StyleHome";
+import {StyleButtonPagination, ContainerPagination, ContainerMovies, ContainerBodyHome, StyleTitlePage } from "./StyleHome";
 
 function Home () {
 
     const [topMovies, setTopMovies] = useState([])
+    const [itensPerPage, setItensPerPage] = useState(10)
+    const [currentPage, setCurrentPage] = useState(0)
+
+    const pages = Math.ceil(topMovies.length / itensPerPage)
+
+    const startIndex = (currentPage * itensPerPage);
+    const endIndex = startIndex + itensPerPage;
+
+    const currentMovies = topMovies.slice(startIndex , endIndex)
+
 
     const getTopMovies = async (url) => {
         const res = await fetch(url)
@@ -33,10 +43,15 @@ function Home () {
         <StyleTitlePage >Filmes Populares</StyleTitlePage>
         <ContainerBodyHome>
             <ContainerMovies>
-                {topMovies.length === 0 && <p>Carregando...</p>}
-                {topMovies.length > 0 && topMovies.map((movie) => <MovieCard key={movie.id} movie={movie} noColorTitleWhite={true} ></MovieCard>)}
+                {currentMovies.length === 0 && <p>Carregando...</p>}
+                {currentMovies.length > 0 && currentMovies.map((movie) => <MovieCard key={movie.id} movie={movie} noColorTitleWhite={true} ></MovieCard>)}
             </ContainerMovies>
         </ContainerBodyHome>
+        <ContainerPagination>
+            {Array.from(Array(pages), (item, index) => {
+                return <StyleButtonPagination key={index} value={index} onClick={(e) => setCurrentPage(Number(e.target.value))}>{index}</StyleButtonPagination>
+            })}
+        </ContainerPagination>
     </div>
         
     )
