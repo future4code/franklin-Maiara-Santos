@@ -82,4 +82,8 @@ export const StyleButtonDetails = styled.button`
     border-radius: 5px;
     text-decoration: none;
     border: none;
+
+    &:hover {
+        background-color: #ffff40
+    }
 `

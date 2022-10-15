@@ -8,12 +8,6 @@ function BannerHome () {
             <BoxTitle>
                 <StyleTitle>Milhões de filmes, séries e pessoas para descobrir. Explore já.</StyleTitle>
             </BoxTitle>
-            <div>
-                <StyleSubtitle>FILTRE POR:</StyleSubtitle>
-            </div>
-            <div>
-                <StyleButtom>Ação</StyleButtom>
-            </div>
         </ContainerBanner>
     )
 }
