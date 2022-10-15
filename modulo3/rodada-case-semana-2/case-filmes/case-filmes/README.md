@@ -10,7 +10,7 @@ O case foi elaborado pela empresa promobit, e pode ser consultado neste [link](h
 
 # Link de Deploy
 
-Confira o projeto pronto [aqui:](promobit-labenu-final-maiara-2022.surge.sh)
+Confira o projeto pronto aqui: [promobit-labenu-final-maiara-2022.surge.sh](promobit-labenu-final-maiara-2022.surge.sh)
 
 # Features a serem realizadas
 
