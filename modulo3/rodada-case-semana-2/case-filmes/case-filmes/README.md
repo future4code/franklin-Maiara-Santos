@@ -1,10 +1,12 @@
-# Getting Started with Create React App
+# Rodada de Cases 🎡
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto faz parte da semana de cases da Labenu, como parte final do projeto pedagógico do curso.
 
-## Available Scripts
+# Case Promobit
 
-In the project directory, you can run:
+Este case foi feito por mim  [Maiara Cruz](https://br.linkedin.com/in/maiara-ferreira-19a03014b), e tem como objetivo construir uma aplicação front-end para utilizar a API de filmes da TMDB.
+
+
 
 ### `npm start`
 
