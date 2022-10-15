@@ -21,8 +21,8 @@ A página com detalhes de um filme deve possuir uma rota própria e estar prepar
 
 # Tecnologias utilizadas
 
-* ⚛️ React ⚛️
-* 💅🏼 Styled Components 💅🏼
+* React ⚛️
+* Styled Components 💅🏼
 * React Router Dom 🌐
 * ReactPlayer 📽️
 
