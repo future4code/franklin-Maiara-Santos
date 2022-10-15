@@ -14,10 +14,10 @@ Confira o projeto pronto aqui: promobit-labenu-final-maiara-2022.surge.sh
 
 # Features a serem realizadas
 
-O usuário deve ter acesso a uma listagem dos filmes mais populares do dia ✅
-O usuário deve conseguir paginar a lista para encontrar novos filmes ✅
-O usuário deve ter acesso a uma outra página com detalhes sobre o filme, ao clicar em um item na listagem ✅
-A página com detalhes de um filme deve possuir uma rota própria e estar preparada para ser indexada em mecanismos de pesquisa ✅
+* O usuário deve ter acesso a uma listagem dos filmes mais populares do dia ✅
+* O usuário deve conseguir paginar a lista para encontrar novos filmes ✅
+* O usuário deve ter acesso a uma outra página com detalhes sobre o filme, ao clicar em um item na listagem ✅
+* A página com detalhes de um filme deve possuir uma rota própria e estar preparada para ser indexada em mecanismos de pesquisa ✅
 
 # Tecnologias utilizadas
 
