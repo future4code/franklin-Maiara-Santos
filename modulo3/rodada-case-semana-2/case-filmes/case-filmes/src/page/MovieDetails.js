@@ -8,7 +8,6 @@ import ReactPlayer from 'react-player/youtube'
 import {ContainerRecomendacoes, StyleImageRecommendations, ContainerTrailer, StyleTitlePage, CastContainer, CastCard, CastName, CharacterName, ContainerMovieDetails, StyleSinopse, DetailsTextMovie} from "./StyleDetails"
 import Header from "../components/Header/Header";
 import { Link } from "react-router-dom";
-import { IMG_API } from "../constants/urls";
 
 
 const MovieDetails = () => {
